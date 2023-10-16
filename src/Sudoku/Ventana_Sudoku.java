@@ -1,5 +1,5 @@
 package Sudoku;
-
+/*
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -119,4 +119,45 @@ public class Ventana_Sudoku extends JFrame
 	}
 
 
+}
+*/
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Ventana_Sudoku {
+    private JFrame frame;
+    private JTextField[][] sudokuCells;
+
+    public Ventana_Sudoku() {
+        frame = new JFrame("Sudoku");
+        sudokuCells = new JTextField[9][9];
+
+        // Configuración del diseño del marco
+        frame.setLayout(new GridLayout(9, 9));
+
+        // Crear las celdas del Sudoku y agregarlas al marco
+        for (int i = 0; i < 9; i++) 
+        {
+            for (int j = 0; j < 9; j++) 
+            {
+                sudokuCells[i][j] = new JTextField();
+                sudokuCells[i][j].setHorizontalAlignment(JTextField.CENTER);
+                sudokuCells[i][j].setFont(new Font("Arial", Font.BOLD, 20));
+                frame.add(sudokuCells[i][j]);
+            }
+        }
+
+        // Configurar la ventana
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(500, 500);
+        frame.setVisible(true);
+    }
+
+    public static void main(String[] args) 
+    {
+        SwingUtilities.invokeLater(() -> {
+            new Ventana_Sudoku();
+        });
+    }
 }

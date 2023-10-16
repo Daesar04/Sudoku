@@ -1,6 +1,9 @@
 package Sudoku;
 import java.util.Random;
 
+/**
+ * clase juego_sudoku
+ */
 public class Juego_Sudoku extends Tablero_Sudoku{
 
 	/**
@@ -122,6 +125,7 @@ public class Juego_Sudoku extends Tablero_Sudoku{
 	            if (this.getTablero()[fila][columna].getValorBueno() == 0 && posicionValidaFila(fila, columna, numero) && posicionValidaColumna(fila, columna, numero) && posicionValida3x3(fila, columna, numero)) {
 	            	getTablero()[fila][columna].setValorBueno(numero);
 	            	getTablero()[fila][columna].setValorDado(numero);
+	            	getTablero()[fila][columna].setValorBase(true);
 	            } else {
 	                i--;
 	            }
@@ -131,15 +135,6 @@ public class Juego_Sudoku extends Tablero_Sudoku{
 	    imprimirTableroResuelto();
 	    imprimirTableroDado();
 	}
-	/*
-	public boolean checkUniqueSolution() {
-        Celda[][] copy = new Celda[9][9];
-        for (int i = 0; i < 9; i++) {
-            System.arraycopy(this.getTablero()[i], 0, copy[i], 0, 9);
-        }
-
-        return solveSudoku();
-    }*/
 	
 	/**
      * Resuelve el Sudoku recursivamente utilizando la técnica de "backtracking".

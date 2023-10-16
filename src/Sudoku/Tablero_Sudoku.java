@@ -1,6 +1,8 @@
 package Sudoku;
 
-
+/**
+ * clase tablero_sudoku
+ */
 public class Tablero_Sudoku extends Celda{
 	
 	public static final String ANSI_RED = "\u001B[31m"; //Declaracion del texto en rojo

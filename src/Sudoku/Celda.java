@@ -2,7 +2,6 @@ package Sudoku;
 
 /**
  * Celda va a representar cada casilla del sudoku.
- * @author David Escribano - Javier Sáez.
  */
 
 public class Celda {
@@ -11,20 +10,22 @@ public class Celda {
 	 * Atributos de la clase.
 	 * @param correcto booleano que marca la casilla como correcto o incorrecto.
 	 * @param valorDado valor que digita el usuario.
-	 * @param valorBueno valor correcto del sudoku.
+	 * valorBueno valor correcto del sudoku.
 	 */
 	private boolean correcto;
 	private int valorDado; 
 	private int valorBueno;
+	private boolean valorBase;
 
 	/**
 	 * Constructor de la clase Celda.
 	 * Inicializa una celda con valores predeterminados.
 	 */
 	public Celda() {
-		this.setValorDado(0);    // Inicializa el valor dado en 0.
-		this.setValorBueno(0);   // Inicializa el valor correcto en 0.
+		this.setValorDado(0);     // Inicializa el valor dado en 0.
+		this.setValorBueno(0);    // Inicializa el valor correcto en 0.
 		this.setCorrecto(false);  // Inicializa la casilla como incorrecta.
+		this.setValorBase(false); // Inicializa la casilla como incorrecta.
 	}
 
 	/**
@@ -43,6 +44,16 @@ public class Celda {
 		this.correcto = correcto;
 	}
 
+	
+	public boolean isBase() {
+		return valorBase;
+	}
+
+	
+	public void setValorBase(boolean base) {
+		this.valorBase = base;
+	}
+	
 	/**
 	 * Obtiene el valor ingresado por el usuario en la casilla.
 	 * @return el valor ingresado por el usuario.
