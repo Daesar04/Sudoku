@@ -1,13 +1,16 @@
 package Sudoku;
 
 /**
- * clase tablero_sudoku
+ * Clase que representa el tablero de juego del Sudoku.
  */
 public class Tablero_Sudoku extends Celda{
 	
-	public static final String ANSI_RED = "\u001B[31m"; //Declaracion del texto en rojo
-	public static final String ANSI_RESET = "\u001B[0m"; //Declaracion del texto por defecto
+	/** Declaracion del texto en rojo */
+	public static final String ANSI_RED = "\u001B[31m";
+	/** Declaracion del texto por defecto */
+	public static final String ANSI_RESET = "\u001B[0m";
 	
+	/** Matriz de tipo Celda que representa el tablero del Sudoku. */
 	private Celda[][] tablero;
 
 	/**
@@ -33,7 +36,7 @@ public class Tablero_Sudoku extends Celda{
 
 	/**
 	 * Establece el tablero del Sudoku.
-	 * @param tablero la matriz de celdas que representa el tablero del Sudoku.
+	 * @param tablero 		la matriz de celdas que representa el tablero del Sudoku.
 	 */
 	public void setTablero(Celda[][] tablero) {
 		this.tablero = tablero;

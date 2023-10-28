@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"Sudoku","l":"Celda"},{"p":"Sudoku","l":"ClaseMainSudoku"},{"p":"Sudoku","l":"Juego_Sudoku"},{"p":"Sudoku","l":"Tablero_Sudoku"},{"p":"Sudoku","l":"Ventana_Sudoku"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"Sudoku","l":"Celda"},{"p":"Sudoku","l":"ClaseMainSudoku"},{"p":"Sudoku","l":"Juego_Sudoku"},{"p":"Sudoku","l":"Tablero_Sudoku"}];updateSearchResults();

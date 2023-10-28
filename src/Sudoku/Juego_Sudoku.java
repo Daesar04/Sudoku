@@ -2,7 +2,7 @@ package Sudoku;
 import java.util.Random;
 
 /**
- * clase juego_sudoku
+ * La clase Juego_Sudoku extiende de Tablero_Sudoku y gestiona las reglas y lógica del juego Sudoku.
  */
 public class Juego_Sudoku extends Tablero_Sudoku{
 
@@ -42,10 +42,10 @@ public class Juego_Sudoku extends Tablero_Sudoku{
 	
     /**
      * Verifica si el número ingresado en una casilla, es válido en esa fila.
-     * @param fila La fila en la que se encuentra la casilla.
-     * @param columna La columna en la que se encuentra la casilla.
-     * @param num El número a verificar.
-     * @return true si el número es válido en la fila, false de lo contrario.
+     * @param fila 		La fila en la que se encuentra la casilla.
+     * @param columna 	La columna en la que se encuentra la casilla.
+     * @param num 		El número a verificar.
+     * @return true 	Si el número es válido en la fila, false de lo contrario.
      */
     public boolean posicionValidaFila(int fila, int columna, int num)
     {
@@ -62,10 +62,10 @@ public class Juego_Sudoku extends Tablero_Sudoku{
 	
     /**
      * Verifica si el número ingresado en una casilla, es válido en esa columna.
-     * @param fila La fila en la que se encuentra la casilla.
-     * @param columna La columna en la que se encuentra la casilla.
-     * @param num El número a verificar.
-     * @return true si el número es válido en la columna, false de lo contrario.
+     * @param fila 		La fila en la que se encuentra la casilla.
+     * @param columna 	La columna en la que se encuentra la casilla.
+     * @param num 		El número a verificar.
+     * @return true 	Si el número es válido en la columna, false de lo contrario.
      */
     public boolean posicionValidaColumna(int fila, int columna, int num) 
     {
@@ -82,10 +82,10 @@ public class Juego_Sudoku extends Tablero_Sudoku{
 	
     /**
      * Verifica si el número ingresado en una casilla de 3x3 es válido.
-     * @param fila La fila en la que se encuentra la casilla.
-     * @param columna La columna en la que se encuentra la casilla.
-     * @param num El número a verificar.
-     * @return true si el número es válido en la región 3x3, false de lo contrario.
+     * @param fila 		La fila en la que se encuentra la casilla.
+     * @param columna 	La columna en la que se encuentra la casilla.
+     * @param num 		El número a verificar.
+     * @return true 	Si el número es válido en la región 3x3, false de lo contrario.
      */
     public boolean posicionValida3x3(int fila, int columna, int num) 
     {
