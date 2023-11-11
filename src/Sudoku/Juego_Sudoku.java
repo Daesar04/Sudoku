@@ -1,12 +1,14 @@
 package Sudoku;
+
 import java.util.Random;
 
 /**
  * La clase Juego_Sudoku extiende de Tablero_Sudoku y gestiona las reglas y lógica del juego Sudoku.
  */
-public class Juego_Sudoku extends Tablero_Sudoku{
+public class Juego_Sudoku extends Tablero_Sudoku
+{
 
-	/**
+    /**
      * Comprueba si el tablero de Sudoku está resuelto.
      * @return true si el tablero está completamente resuelto, false de lo contrario.
      */
@@ -26,19 +28,19 @@ public class Juego_Sudoku extends Tablero_Sudoku{
     }
 	
 	
-	/*public void posicionValida(int fila, int columna, int num)
-	{
-		
-		if(this.getTablero()[fila][columna].getValorBueno() != num)
-		{
-			this.getTablero()[fila][columna].setCorrecto(false);
-			
-		}else
-		{
-			this.getTablero()[fila][columna].setCorrecto(true);
-		}
-		
-	}*/
+    /*public void posicionValida(int fila, int columna, int num)
+    {
+
+            if(this.getTablero()[fila][columna].getValorBueno() != num)
+            {
+                    this.getTablero()[fila][columna].setCorrecto(false);
+
+            }else
+            {
+                    this.getTablero()[fila][columna].setCorrecto(true);
+            }
+
+    }*/
 	
     /**
      * Verifica si el número ingresado en una casilla, es válido en esa fila.
@@ -107,51 +109,54 @@ public class Juego_Sudoku extends Tablero_Sudoku{
     /**
      * Genera un nuevo tablero de Sudoku aleatorio.
      */
-	public void generarSudoku() {
-	    Random random = new Random();
-	    int cont = 0;
-	    do {
-	    	if(cont > 0)
-	    	{
-	    		Juego_Sudoku aux = new Juego_Sudoku();
-	    		this.setTablero(aux.getTablero());
-	    	}
-	    	
-	        for (int i = 0; i < 30; i++) {
-	            int fila = random.nextInt(9);
-	            int columna = random.nextInt(9);
-	            int numero = random.nextInt(9) + 1;
+    public void generarSudoku() 
+    {
+        Random random = new Random();
+        int cont = 0;
+        do {
+            if(cont > 0)
+            {
+                    Juego_Sudoku aux = new Juego_Sudoku();
+                    this.setTablero(aux.getTablero());
+            }
+
+            for (int i = 0; i < 30; i++) 
+            {
+                int fila = random.nextInt(9);
+                int columna = random.nextInt(9);
+                int numero = random.nextInt(9) + 1;
+
+                if (this.getTablero()[fila][columna].getValorBueno() == 0 && posicionValidaFila(fila, columna, numero) && posicionValidaColumna(fila, columna, numero) && posicionValida3x3(fila, columna, numero)) 
+                {
+                    getTablero()[fila][columna].setValorBueno(numero);
+                    getTablero()[fila][columna].setValorDado(numero);
+                    getTablero()[fila][columna].setValorBase(true);
+                } else {
+                    i--;
+                }
+            }
+            cont ++;
+        } while (!resolverSudoku());
+        imprimirTableroResuelto();
+        imprimirTableroDado();
+    }
 	
-	            if (this.getTablero()[fila][columna].getValorBueno() == 0 && posicionValidaFila(fila, columna, numero) && posicionValidaColumna(fila, columna, numero) && posicionValida3x3(fila, columna, numero)) {
-	            	getTablero()[fila][columna].setValorBueno(numero);
-	            	getTablero()[fila][columna].setValorDado(numero);
-	            	getTablero()[fila][columna].setValorBase(true);
-	            } else {
-	                i--;
-	            }
-	        }
-	        cont ++;
-	    } while (!resolverSudoku());
-	    imprimirTableroResuelto();
-	    imprimirTableroDado();
-	}
-	
-	/**
+    /**
      * Resuelve el Sudoku recursivamente utilizando la técnica de "backtracking".
      * @return true si el Sudoku se resuelve, false si no se puede resolver.
      */
-	public boolean resolverSudoku() {
+    public boolean resolverSudoku() {
         for (int fila = 0; fila < 9; fila++) {
             for (int columna = 0; columna < 9; columna++) {
                 if (this.getTablero()[fila][columna].getValorBueno() == 0) {
                     for (int numero = 1; numero < 10; numero++) {
                         if (posicionValidaFila(fila, columna, numero) && posicionValidaColumna(fila, columna, numero) && posicionValida3x3(fila, columna, numero)) {
-                        	this.getTablero()[fila][columna].setValorBueno(numero);
+                                this.getTablero()[fila][columna].setValorBueno(numero);
 
                             if (resolverSudoku()) {
                                 return true;
                             } else {
-                            	this.getTablero()[fila][columna].setValorBueno(0);
+                                this.getTablero()[fila][columna].setValorBueno(0);
                             }
                         }
                     }
@@ -162,11 +167,58 @@ public class Juego_Sudoku extends Tablero_Sudoku{
         return true;
     }
 	
-	/*public boolean hacerMovimiento(int fila, int columna, int num)
-	{
-		posicionValida(fila, columna, num);
-		this.getTablero()[fila][columna].setValorDado(num);
-		
-		return false;
-	}*/
+    /*public boolean hacerMovimiento(int fila, int columna, int num)
+    {
+            posicionValida(fila, columna, num);
+            this.getTablero()[fila][columna].setValorDado(num);
+
+            return false;
+    }*/
+
+    void generarSudokuConDificultad(String dificultadSeleccionada) {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int dificultad = 0;
+        
+        if(dificultadSeleccionada == "Fácil")
+        {
+            dificultad = 37;
+        } 
+        else if(dificultadSeleccionada == "Medio")
+        {
+            dificultad = 30;
+        } 
+        else if(dificultadSeleccionada == "Difícil")
+        {
+            dificultad = 23;
+        }
+        
+        Random random = new Random();
+        int cont = 0;
+        do {
+            if(cont > 0)
+            {
+                Juego_Sudoku aux = new Juego_Sudoku();
+                this.setTablero(aux.getTablero());
+            }
+
+            for (int i = 0; i < dificultad; i++) 
+            {
+                int fila = random.nextInt(9);
+                int columna = random.nextInt(9);
+                int numero = random.nextInt(9) + 1;
+
+                if (this.getTablero()[fila][columna].getValorBueno() == 0 && posicionValidaFila(fila, columna, numero) && posicionValidaColumna(fila, columna, numero) && posicionValida3x3(fila, columna, numero)) 
+                {
+                    getTablero()[fila][columna].setValorBueno(numero);
+                    getTablero()[fila][columna].setValorDado(numero);
+                    getTablero()[fila][columna].setValorBase(true);
+                } else {
+                    i--;
+                }
+            }
+            cont ++;
+        } while (!resolverSudoku());
+        imprimirTableroResuelto();
+        imprimirTableroDado();
+    }
 }
