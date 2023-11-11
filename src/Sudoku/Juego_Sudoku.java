@@ -3,14 +3,14 @@ package Sudoku;
 import java.util.Random;
 
 /**
- * La clase Juego_Sudoku extiende de Tablero_Sudoku y gestiona las reglas y lógica del juego Sudoku.
+ * La clase Juego_Sudoku extiende de Tablero_Sudoku y gestiona las reglas y logica del juego Sudoku.
  */
 public class Juego_Sudoku extends Tablero_Sudoku
 {
 
     /**
-     * Comprueba si el tablero de Sudoku está resuelto.
-     * @return true si el tablero está completamente resuelto, false de lo contrario.
+     * Comprueba si el tablero de Sudoku esta resuelto.
+     * @return true si el tablero esta completamente resuelto, false de lo contrario.
      */
     public boolean resuelto() 
     {
@@ -43,11 +43,11 @@ public class Juego_Sudoku extends Tablero_Sudoku
     }*/
 	
     /**
-     * Verifica si el número ingresado en una casilla, es válido en esa fila.
+     * Verifica si el numero ingresado en una casilla, es valido en esa fila.
      * @param fila 		La fila en la que se encuentra la casilla.
      * @param columna 	La columna en la que se encuentra la casilla.
-     * @param num 		El número a verificar.
-     * @return true 	Si el número es válido en la fila, false de lo contrario.
+     * @param num 		El numero a verificar.
+     * @return true 	Si el numero es valido en la fila, false de lo contrario.
      */
     public boolean posicionValidaFila(int fila, int columna, int num)
     {
@@ -63,11 +63,11 @@ public class Juego_Sudoku extends Tablero_Sudoku
     }
 	
     /**
-     * Verifica si el número ingresado en una casilla, es válido en esa columna.
+     * Verifica si el numero ingresado en una casilla, es valido en esa columna.
      * @param fila 		La fila en la que se encuentra la casilla.
      * @param columna 	La columna en la que se encuentra la casilla.
-     * @param num 		El número a verificar.
-     * @return true 	Si el número es válido en la columna, false de lo contrario.
+     * @param num 		El numero a verificar.
+     * @return true 	Si el numero es valido en la columna, false de lo contrario.
      */
     public boolean posicionValidaColumna(int fila, int columna, int num) 
     {
@@ -83,11 +83,11 @@ public class Juego_Sudoku extends Tablero_Sudoku
     }
 	
     /**
-     * Verifica si el número ingresado en una casilla de 3x3 es válido.
+     * Verifica si el numero ingresado en una casilla de 3x3 es valido.
      * @param fila 		La fila en la que se encuentra la casilla.
      * @param columna 	La columna en la que se encuentra la casilla.
-     * @param num 		El número a verificar.
-     * @return true 	Si el número es válido en la región 3x3, false de lo contrario.
+     * @param num 		El numero a verificar.
+     * @return true 	Si el numero es valido en la region 3x3, false de lo contrario.
      */
     public boolean posicionValida3x3(int fila, int columna, int num) 
     {
@@ -142,7 +142,7 @@ public class Juego_Sudoku extends Tablero_Sudoku
     }
 	
     /**
-     * Resuelve el Sudoku recursivamente utilizando la técnica de "backtracking".
+     * Resuelve el Sudoku recursivamente utilizando la tecnica de "backtracking".
      * @return 	true si el Sudoku se resuelve, false si no se puede resolver.
      */
     public boolean resolverSudoku() {
@@ -184,7 +184,7 @@ public class Juego_Sudoku extends Tablero_Sudoku
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         int dificultad = 0;
         
-        if(dificultadSeleccionada == "Fácil")
+        if(dificultadSeleccionada == "Facil")
         {
             dificultad = 37;
         } 
@@ -192,7 +192,7 @@ public class Juego_Sudoku extends Tablero_Sudoku
         {
             dificultad = 30;
         } 
-        else if(dificultadSeleccionada == "Difícil")
+        else if(dificultadSeleccionada == "Dificil")
         {
             dificultad = 23;
         }

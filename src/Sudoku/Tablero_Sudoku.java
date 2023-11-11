@@ -51,8 +51,8 @@ public class Tablero_Sudoku extends Celda
     }
 
     /**
-     * Comprueba si el Sudoku está resuelto correctamente.
-     * @return true si el Sudoku está resuelto correctamente, false de lo contrario.
+     * Comprueba si el Sudoku esta resuelto correctamente.
+     * @return true si el Sudoku esta resuelto correctamente, false de lo contrario.
      */
     public boolean sudokuResuelto()
     {
