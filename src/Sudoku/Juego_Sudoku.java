@@ -143,7 +143,7 @@ public class Juego_Sudoku extends Tablero_Sudoku
 	
     /**
      * Resuelve el Sudoku recursivamente utilizando la técnica de "backtracking".
-     * @return true si el Sudoku se resuelve, false si no se puede resolver.
+     * @return 	true si el Sudoku se resuelve, false si no se puede resolver.
      */
     public boolean resolverSudoku() {
         for (int fila = 0; fila < 9; fila++) {
@@ -175,6 +175,11 @@ public class Juego_Sudoku extends Tablero_Sudoku
             return false;
     }*/
 
+    
+    /**
+     * Genera un nuevo tablero de Sudoku con la dificultad especificada.
+     * @param dificultadSeleccionada 	La dificultad seleccionada para el nuevo Sudoku.
+     */
     void generarSudokuConDificultad(String dificultadSeleccionada) {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         int dificultad = 0;

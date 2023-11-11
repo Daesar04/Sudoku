@@ -8,12 +8,14 @@ public class Tablero_Sudoku extends Celda
 	
     /** Declaracion del texto en rojo */
     public static final String ANSI_RED = "\u001B[31m";
+    
     /** Declaracion del texto por defecto */
     public static final String ANSI_RESET = "\u001B[0m";
 
     /** Matriz de tipo Celda que representa el tablero del Sudoku. */
     private Celda[][] tablero;
 
+    
     /**
      * Constructor de la clase Tablero_Sudoku que inicializa el tablero con objetos Celda.
      */
@@ -34,7 +36,8 @@ public class Tablero_Sudoku extends Celda
      * Obtiene el tablero del Sudoku.
      * @return el tablero del Sudoku como una matriz de celdas.
      */
-    public Celda[][] getTablero() {
+    public Celda[][] getTablero() 
+    {
         return tablero;
     }
 
@@ -42,7 +45,8 @@ public class Tablero_Sudoku extends Celda
      * Establece el tablero del Sudoku.
      * @param tablero 		la matriz de celdas que representa el tablero del Sudoku.
      */
-    public void setTablero(Celda[][] tablero) {
+    public void setTablero(Celda[][] tablero) 
+    {
         this.tablero = tablero;
     }
 

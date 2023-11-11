@@ -5,12 +5,41 @@ import java.awt.Component;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
-import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JPanel;
 
+/**
+ * La clase InterfazDificultad representa la interfaz gráfica para seleccionar la dificultad del juego Sudoku.
+ */
 public class InterfazDificultad extends JFrame
 {
+    
+    /** Botón para la dificultad "Fácil". */
+    public JButton botonFacil;
+    
+    /** Botón para la dificultad "Medio". */
+    private JButton botonMedio;
+    
+	/** Botón para la dificultad "Difícil". */
+    private JButton botonDificil;
+    
+    /** Panel que contiene los botones de dificultad. */
+    private JPanel panelDificultad;
+    
+    /** Referencia a la interfaz principal del juego. */
+    private Interfaz interfaz;
+    
+    /** Almacena la dificultad seleccionada ("Fácil", "Medio" o "Difícil"). */
+    static private String dificultadSeleccionada;
 
-    public InterfazDificultad(Interfaz interfaz) {
+    
+    
+	/**
+     * Constructor de la clase InterfazDificultad.
+     * @param interfaz 	La interfaz principal del juego.
+     */
+    public InterfazDificultad(Interfaz interfaz) 
+    {
         this.interfaz = interfaz;
         initComponents();
         setTitle("DIFICULTAD");
@@ -23,19 +52,38 @@ public class InterfazDificultad extends JFrame
         botonDificil.setFocusPainted(false);
     }
     
-    public String getDificultadSeleccionada() {
+    /**
+     * Obtiene la dificultad seleccionada.
+     * @return 	La dificultad seleccionada ("Fácil", "Medio" o "Difícil").
+     */
+    public String getDificultadSeleccionada() 
+    {
         return dificultadSeleccionada;
+    }
+    
+    /**
+     * Establece la dificultad seleccionada.
+     *
+     * @param dificultadSeleccionada 	La nueva dificultad seleccionada.
+     */
+    public static void setDificultadSeleccionada(String dificultadseleccionada)
+    {
+    	dificultadSeleccionada = dificultadseleccionada;
     }
 
     
+    /**
+     * Inicializa los componentes de la interfaz.
+     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    private void initComponents() {
+    private void initComponents() 
+    {
 
-        panelDificultad = new javax.swing.JPanel();
-        botonFacil = new javax.swing.JButton();
-        botonMedio = new javax.swing.JButton();
-        botonDificil = new javax.swing.JButton();
+        panelDificultad = new JPanel();
+        botonFacil = new JButton();
+        botonMedio = new JButton();
+        botonDificil = new JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,7 +151,25 @@ public class InterfazDificultad extends JFrame
         pack();
     }// </editor-fold>                        
 
-    private void botonMedioActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    /**
+     * Acción realizada cuando se presiona el botón "Fácil".
+     * @param evt 	El evento de acción.
+     */
+    private void botonFacilActionPerformed(java.awt.event.ActionEvent evt) 
+    {                                           
+        dificultadSeleccionada = "Fácil";
+        interfaz = new Interfaz();
+        interfaz.setVisible(true);
+        interfaz.setLocationRelativeTo(null);
+        ((JFrame) SwingUtilities.getWindowAncestor((Component)evt.getSource())).dispose(); // Cerrar la ventana principal
+    }   
+    
+    /**
+     * Acción realizada cuando se presiona el botón "Medio".
+     * @param evt 	El evento de acción.
+     */
+    private void botonMedioActionPerformed(java.awt.event.ActionEvent evt) 
+    {                                           
         dificultadSeleccionada = "Medio";
         interfaz = new Interfaz();
         interfaz.setVisible(true);
@@ -111,29 +177,16 @@ public class InterfazDificultad extends JFrame
         ((JFrame) SwingUtilities.getWindowAncestor((Component)evt.getSource())).dispose(); // Cerrar la ventana principal
     }                                          
 
-    private void botonDificilActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    /**
+     * Acción realizada cuando se presiona el botón "Difícil".
+     * @param evt 	El evento de acción.
+     */
+    private void botonDificilActionPerformed(java.awt.event.ActionEvent evt) 
+    {                                             
         dificultadSeleccionada = "Difícil";
         interfaz = new Interfaz();
         interfaz.setVisible(true);
         interfaz.setLocationRelativeTo(null);
         ((JFrame) SwingUtilities.getWindowAncestor((Component)evt.getSource())).dispose(); // Cerrar la ventana principal
-    }                                            
-
-    private void botonFacilActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        dificultadSeleccionada = "Fácil";
-        interfaz = new Interfaz();
-        interfaz.setVisible(true);
-        interfaz.setLocationRelativeTo(null);
-        ((JFrame) SwingUtilities.getWindowAncestor((Component)evt.getSource())).dispose(); // Cerrar la ventana principal
-    }                                          
-
-    
-    // Variables declaration - do not modify                     
-    private javax.swing.JButton botonDificil;
-    public javax.swing.JButton botonFacil;
-    private javax.swing.JButton botonMedio;
-    private javax.swing.JPanel panelDificultad;
-    // End of variables declaration                   
-    private Interfaz interfaz;
-    static private String dificultadSeleccionada;
+    }                                                                                                         
 }

@@ -34,7 +34,8 @@ public class Celda
      * Devuelve si el valor ingresado por el usuario es correcto o no.
      * @return true si el valor ingresado es correcto, false si es incorrecto.
      */
-    public boolean isCorrecto() {
+    public boolean isCorrecto() 
+    {
         return correcto;
     }
 
@@ -42,7 +43,8 @@ public class Celda
      * Establece si el valor ingresado por el usuario es correcto o no.
      * @param correcto 		True si es correcto, false si es incorrecto.
      */
-    public void setCorrecto(boolean correcto) {
+    public void setCorrecto(boolean correcto) 
+    {
         this.correcto = correcto;
     }
 
@@ -50,7 +52,8 @@ public class Celda
      * Verifica si la celda es parte de la configuración inicial del sudoku.
      * @return true si la celda es parte de la configuración inicial, false si fue modificada por el usuario.
      */
-    public boolean isBase() {
+    public boolean isBase() 
+    {
         return valorBase;
     }
 
@@ -58,7 +61,8 @@ public class Celda
      * Establece si la celda es parte de la configuración inicial del sudoku.
      * @param base 		True si es parte de la configuración inicial, false si no lo es.
      */
-    public void setValorBase(boolean base) {
+    public void setValorBase(boolean base) 
+    {
         this.valorBase = base;
     }
 
@@ -66,7 +70,8 @@ public class Celda
      * Obtiene el valor ingresado por el usuario en la celda.
      * @return el valor ingresado por el usuario.
      */
-    public int getValorDado() {
+    public int getValorDado() 
+    {
         return valorDado;
     }
 
@@ -75,9 +80,11 @@ public class Celda
      * Si el valor coincide con el valor correcto, se marca como correcto.
      * @param valorDado 	El valor ingresado por el usuario.
      */
-    public void setValorDado(int valorDado) {
-        if (valorDado == this.valorBueno) {
-                correcto = true;
+    public void setValorDado(int valorDado) 
+    {
+        if (valorDado == this.valorBueno) 
+        {
+        	correcto = true;
         }
         this.valorDado = valorDado;
     }
@@ -86,7 +93,8 @@ public class Celda
      * Obtiene el valor correcto de la celda en el sudoku.
      * @return el valor correcto de la celda.
      */
-    public int getValorBueno() {
+    public int getValorBueno() 
+    {
         return valorBueno;
     }
 
@@ -94,7 +102,8 @@ public class Celda
      * Establece el valor correcto de la celda en el sudoku.
      * @param valorBueno 	El valor correcto de la celda.
      */
-    public void setValorBueno(int valorBueno) {
+    public void setValorBueno(int valorBueno) 
+    {
         this.valorBueno = valorBueno;
     }
 
@@ -102,11 +111,13 @@ public class Celda
      * Verifica si la celda está ocupada (tiene un valor ingresado por el usuario).
      * @return true si la celda está ocupada, false si está vacía.
      */
-    public boolean estaOcupado() {
-        if (this.getValorDado() == 0) {
-                return false;  // La celda está vacía.
+    public boolean estaOcupado() 
+    {
+        if (this.getValorDado() == 0) 
+        {
+        	return false;  // La celda está vacía.
         } else {
-                return true;   // La celda está ocupada.
+        	return true;   // La celda está ocupada.
         }		
     }
 }
