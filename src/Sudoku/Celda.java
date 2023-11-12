@@ -111,7 +111,7 @@ public class Celda
      * Verifica si la celda esta ocupada (tiene un valor ingresado por el usuario).
      * @return true si la celda esta ocupada, false si esta vacia.
      */
-    public boolean estaOcupado() 
+    /*public boolean estaOcupado() 
     {
         if (this.getValorDado() == 0) 
         {
@@ -119,5 +119,5 @@ public class Celda
         } else {
         	return true;   // La celda esta ocupada.
         }		
-    }
+    }*/
 }

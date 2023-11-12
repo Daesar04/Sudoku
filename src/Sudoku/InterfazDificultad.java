@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import java.awt.event.ActionEvent;
 
 /**
  * La clase InterfazDificultad representa la interfaz grafica para seleccionar la dificultad del juego Sudoku.
@@ -90,7 +91,7 @@ public class InterfazDificultad extends JFrame
 		botonFacil.setBackground(new java.awt.Color(0, 255, 0));
 		botonFacil.setText("FACIL");
 		botonFacil.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
+			public void actionPerformed(ActionEvent evt) {
 				botonFacilActionPerformed(evt);
 			}
 		});
@@ -98,7 +99,7 @@ public class InterfazDificultad extends JFrame
 		botonMedio.setBackground(new java.awt.Color(255, 204, 51));
 		botonMedio.setText("MEDIO");
 		botonMedio.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
+			public void actionPerformed(ActionEvent evt) {
 				botonMedioActionPerformed(evt);
 			}
 		});
@@ -106,7 +107,7 @@ public class InterfazDificultad extends JFrame
 		botonDificil.setBackground(new java.awt.Color(255, 51, 51));
 		botonDificil.setText("DIFICIL");
 		botonDificil.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
+			public void actionPerformed(ActionEvent evt) {
 				botonDificilActionPerformed(evt);
 			}
 		});
@@ -155,7 +156,7 @@ public class InterfazDificultad extends JFrame
 	 * Accion realizada cuando se presiona el boton "Facil".
 	 * @param evt 	El evento de accion.
 	 */
-	private void botonFacilActionPerformed(java.awt.event.ActionEvent evt) 
+	private void botonFacilActionPerformed(ActionEvent evt) 
 	{                                           
 		dificultadSeleccionada = "Facil";
 		interfaz = new Interfaz();
@@ -168,7 +169,7 @@ public class InterfazDificultad extends JFrame
 	 * Accion realizada cuando se presiona el boton "Medio".
 	 * @param evt 	El evento de accion.
 	 */
-	private void botonMedioActionPerformed(java.awt.event.ActionEvent evt) 
+	private void botonMedioActionPerformed(ActionEvent evt) 
 	{                                           
 		dificultadSeleccionada = "Medio";
 		interfaz = new Interfaz();
@@ -181,7 +182,7 @@ public class InterfazDificultad extends JFrame
 	 * Accion realizada cuando se presiona el boton "Dificil".
 	 * @param evt 	El evento de accion.
 	 */
-	private void botonDificilActionPerformed(java.awt.event.ActionEvent evt) 
+	private void botonDificilActionPerformed(ActionEvent evt) 
 	{                                             
 		dificultadSeleccionada = "Dificil";
 		interfaz = new Interfaz();

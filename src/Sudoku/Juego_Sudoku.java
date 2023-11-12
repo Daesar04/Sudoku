@@ -28,19 +28,7 @@ public class Juego_Sudoku extends Tablero_Sudoku
     }
 	
 	
-    /*public void posicionValida(int fila, int columna, int num)
-    {
-
-            if(this.getTablero()[fila][columna].getValorBueno() != num)
-            {
-                    this.getTablero()[fila][columna].setCorrecto(false);
-
-            }else
-            {
-                    this.getTablero()[fila][columna].setCorrecto(true);
-            }
-
-    }*/
+    
 	
     /**
      * Verifica si el numero ingresado en una casilla, es valido en esa fila.
@@ -167,20 +155,14 @@ public class Juego_Sudoku extends Tablero_Sudoku
         return true;
     }
 	
-    /*public boolean hacerMovimiento(int fila, int columna, int num)
-    {
-            posicionValida(fila, columna, num);
-            this.getTablero()[fila][columna].setValorDado(num);
-
-            return false;
-    }*/
+    
 
     
     /**
      * Genera un nuevo tablero de Sudoku con la dificultad especificada.
      * @param dificultadSeleccionada 	La dificultad seleccionada para el nuevo Sudoku.
      */
-    void generarSudokuConDificultad(String dificultadSeleccionada) {
+    public void generarSudokuConDificultad(String dificultadSeleccionada) {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         int dificultad = 0;
         
