@@ -125,8 +125,8 @@ public class Juego_Sudoku extends Tablero_Sudoku
             }
             cont ++;
         } while (!resolverSudoku());
-        imprimirTableroResuelto();
-        imprimirTableroDado();
+        /*imprimirTableroResuelto();
+        imprimirTableroDado();*/
     }
 	
     /**
@@ -205,7 +205,7 @@ public class Juego_Sudoku extends Tablero_Sudoku
             }
             cont ++;
         } while (!resolverSudoku());
-        imprimirTableroResuelto();
-        imprimirTableroDado();
+        /*imprimirTableroResuelto();
+        imprimirTableroDado();*/
     }
 }

@@ -68,12 +68,12 @@ public class Tablero_Sudoku extends Celda
         }
         return true;
     }	
-
+    
     /**
      * Imprime el tablero del Sudoku con los valores dados por el usuario, 
      * resaltando en rojo los valores incorrectos.
      */
-    public void imprimirTableroDado()
+    /*public void imprimirTableroDado()
     {
         for(int i = 0; i < 9; i++)
         {
@@ -98,7 +98,7 @@ public class Tablero_Sudoku extends Celda
     /**
      * Imprime el tablero del Sudoku con los valores correctos.
      */
-    public void imprimirTableroResuelto()
+    /*public void imprimirTableroResuelto()
     {
         for(int i = 0; i < 9; i++)
         {
@@ -109,5 +109,5 @@ public class Tablero_Sudoku extends Celda
                 System.out.println("");
         }
         System.out.println("\n\n");
-    }
+    }*/
 }
