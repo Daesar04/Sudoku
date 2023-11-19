@@ -688,7 +688,7 @@ public class Interfaz extends JFrame {
             else if(iDificultad.getDificultadSeleccionada() == "Difícil")
             {
          
-               myFile = new File(rutaPartidas + File.separator + "\\PartidasGuardadas\\ Nivel_Facil");
+               myFile = new File(rutaPartidas + File.separator + "\\PartidasGuardadas\\Nivel_Dificil");
             }
             String rutaCarpeta = myFile.getAbsolutePath();
             selectorDeArchivo.setCurrentDirectory(new File(rutaCarpeta));
