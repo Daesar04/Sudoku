@@ -29,7 +29,7 @@ public class InterfazPantallaCarga extends JFrame
     private Timer temporizador;
 
     /** Contador para realizar el seguimiento del progreso de la carga. */
-    int cont;
+    private int cont;
 
     /**
      * Constructor de la clase InterfazPantallaCarga.
