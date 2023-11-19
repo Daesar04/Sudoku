@@ -29,7 +29,7 @@ Ofrece la opción de seleccionar diferentes niveles de dificultad para adaptarse
 
 ## Esquema UML de clases preliminar
 
-![Esquema UML](https://cdn.discordapp.com/attachments/1039570431507706038/1173233844749598720/Diagrama_en_blanco_2.png?ex=6563362a&is=6550c12a&hm=65e7a5aafafab291a8de28efd20a3b3ae5b97e1f9b6c59a41cb80604322e43c9&)
+![Esquema UML](https://cdn.discordapp.com/attachments/1039570431507706038/1175840360728113293/Diagrama_en_blanco.png?ex=656cb1ac&is=655a3cac&hm=baaf90b5fde5123759cdd1ee7448bbd0e57713686cea106c26cb9726cddbd024&)
 
 
 ## Boceto
