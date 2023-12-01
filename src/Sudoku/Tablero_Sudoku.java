@@ -5,17 +5,9 @@ package Sudoku;
  */
 public class Tablero_Sudoku extends Celda
 {
-	
-    /** Declaracion del texto en rojo */
-    public static final String ANSI_RED = "\u001B[31m";
-    
-    /** Declaracion del texto por defecto */
-    public static final String ANSI_RESET = "\u001B[0m";
-
     /** Matriz de tipo Celda que representa el tablero del Sudoku. */
     private Celda[][] tablero;
 
-    
     /**
      * Constructor de la clase Tablero_Sudoku que inicializa el tablero con objetos Celda.
      */
@@ -36,78 +28,15 @@ public class Tablero_Sudoku extends Celda
      * Obtiene el tablero del Sudoku.
      * @return el tablero del Sudoku como una matriz de celdas.
      */
-    public Celda[][] getTablero() 
-    {
+    public Celda[][] getTablero() {
         return tablero;
     }
 
     /**
      * Establece el tablero del Sudoku.
-     * @param tablero 		la matriz de celdas que representa el tablero del Sudoku.
+     * @param tablero 	la matriz de celdas que representa el tablero del Sudoku.
      */
-    public void setTablero(Celda[][] tablero) 
-    {
+    public void setTablero(Celda[][] tablero) {
         this.tablero = tablero;
     }
-
-    /**
-     * Comprueba si el Sudoku esta resuelto correctamente.
-     * @return true si el Sudoku esta resuelto correctamente, false de lo contrario.
-     */
-    public boolean sudokuResuelto()
-    {
-        for(int i = 0; i < 9; i++)
-        {
-            for(int j = 0; j < 9; j++)
-            {
-                if (tablero[i][j].isCorrecto() != true)
-                {
-                        return false;
-                }
-            }
-        }
-        return true;
-    }	
-    
-    /**
-     * Imprime el tablero del Sudoku con los valores dados por el usuario, 
-     * resaltando en rojo los valores incorrectos.
-     */
-    /*public void imprimirTableroDado()
-    {
-        for(int i = 0; i < 9; i++)
-        {
-            for(int j = 0; j < 9; j++)
-            {			
-                if(tablero[i][j].isCorrecto() != true)
-                {
-                    //pintar en rojo, esta mal
-                    System.out.print(ANSI_RED + tablero[i][j].getValorDado() + ANSI_RESET  + "  ");
-
-                } else
-                {
-                    //pintar en negro, esta bien
-                    System.out.print(tablero[i][j].getValorDado()  + "  ");
-                }
-            }
-            System.out.println("");
-        }
-        System.out.println("\n\n");
-    }
-
-    /**
-     * Imprime el tablero del Sudoku con los valores correctos.
-     */
-    /*public void imprimirTableroResuelto()
-    {
-        for(int i = 0; i < 9; i++)
-        {
-                for(int j = 0; j < 9; j++)
-                {
-                        System.out.print(tablero[i][j].getValorBueno() + "  ");
-                }
-                System.out.println("");
-        }
-        System.out.println("\n\n");
-    }*/
 }

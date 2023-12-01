@@ -11,16 +11,6 @@ public class ClaseMainSudoku
      */
 	public static void main(String[] args) 
     {
-        
-        //new InterfazPantallaCarga().setVisible(true);
-
-        Interfaz interfaz = new Interfaz();
-                        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new InterfazDificultad(interfaz).setVisible(true);
-            }
-        });
+		new InterfazPantallaCarga().setVisible(true);
     }
 }
