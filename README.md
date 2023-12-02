@@ -27,7 +27,7 @@ Ofrece la opción de seleccionar diferentes niveles de dificultad para adaptarse
 
 
 
-## Esquema UML de clases preliminar
+## Esquema UML de clases
 
 ![Esquema UML](https://cdn.discordapp.com/attachments/1039570431507706038/1180201336055283742/Diagrama_en_blanco_1.png?ex=657c8f25&is=656a1a25&hm=6b7540b31317a561275c84a103d432f922f6ce5e34efa21b2bbcd2bfa4135fed&)
 
@@ -35,3 +35,8 @@ Ofrece la opción de seleccionar diferentes niveles de dificultad para adaptarse
 ## Boceto
 
 ![Boceto](https://cdn.discordapp.com/attachments/1039570431507706038/1158765794382069880/image.png?ex=6537ce3e&is=6525593e&hm=330103b1495f2c1825a5c6490a5bff3c3138a320c84bb27ca464a93d8b09ba78&)
+
+
+## Interfaz Final
+
+![Interfaz Final](https://media.discordapp.net/attachments/1039570431507706038/1180498832954503269/image.png?ex=657da436&is=656b2f36&hm=5ad00e8d0b94c80bd88d2ba349f8d3db9cd6014a783be95a8c89331d1fe778d7&=&format=webp&quality=lossless&width=1108&height=902)
