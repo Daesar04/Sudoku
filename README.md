@@ -34,7 +34,7 @@ Ofrece la opción de seleccionar diferentes niveles de dificultad para adaptarse
 
 ## Boceto
 
-![Boceto](https://cdn.discordapp.com/attachments/1039570431507706038/1158765794382069880/image.png?ex=6537ce3e&is=6525593e&hm=330103b1495f2c1825a5c6490a5bff3c3138a320c84bb27ca464a93d8b09ba78&)
+![Boceto](https://cdn.discordapp.com/attachments/1039570431507706038/1180541089480978452/Diagrama_en_blanco_2.png?ex=657dcb91&is=656b5691&hm=1ede694ca2b29c66523f0ebd8becf2d965890f2f52b8e8edcd7acb59cad18b8c&)
 
 
 ## Interfaz Final
