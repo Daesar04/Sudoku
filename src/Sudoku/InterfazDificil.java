@@ -1,8 +1,8 @@
 package Sudoku;
 
 /**
- * Clase InterfazDificil, una subclase de InterfazDificultadAbstracta que representa una interfaz con dificultad difícil.
- * Esta clase define específicamente la dificultad del juego como "Dificil".
+ * Clase InterfazDificil, una subclase de InterfazDificultadAbstracta que representa una interfaz con dificultad dificil.
+ * Esta clase define especificamente la dificultad del juego como "Dificil".
  */
 public class InterfazDificil extends InterfazDificultadAbstracta 
 {
@@ -16,9 +16,9 @@ public class InterfazDificil extends InterfazDificultadAbstracta
     }
 
     /**
-     * Sobrescribe el método establecerDificultad de la clase padre InterfazDificultadAbstracta.
-     * Este método crea una nueva instancia de la interfaz principal del juego y la hace visible,
-     * estableciendo así la dificultad del juego a difícil.
+     * Sobrescribe el metodo establecerDificultad de la clase padre InterfazDificultadAbstracta.
+     * Este metodo crea una nueva instancia de la interfaz principal del juego y la hace visible,
+     * estableciendo asi la dificultad del juego a dificil.
      */
     @Override
     public void establecerDificultad() 

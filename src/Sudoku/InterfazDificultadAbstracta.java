@@ -7,13 +7,13 @@ package Sudoku;
 public abstract class InterfazDificultadAbstracta 
 {
     /**
-     * Nombre de la dificultad, protegido para permitir el acceso sólo a las subclases.
+     * Nombre de la dificultad, protegido para permitir el acceso solo a las subclases.
      */
     protected String nombre;
 
     /**
-     * Método abstracto para establecer la dificultad del juego.
-     * Las subclases deben proporcionar una implementación concreta para este método.
+     * Metodo abstracto para establecer la dificultad del juego.
+     * Las subclases deben proporcionar una implementacion concreta para este metodo.
      */
     public abstract void establecerDificultad();
 

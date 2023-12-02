@@ -15,42 +15,42 @@ public class Interfaz extends JFrame
 {
 
 	/**
-	 * Instancia única de la clase Interfaz, utilizada para implementar el patrón Singleton.
+	 * Instancia unica de la clase Interfaz, utilizada para implementar el patron Singleton.
 	 */
 	private static Interfaz instancia;
 
 	/**
-	 * Botón para cargar una partida guardada previamente.
+	 * Boton para cargar una partida guardada previamente.
 	 */
 	private JButton botonCargarPartida;
 
 	/**
-	 * Botón para guardar el estado actual del juego.
+	 * Boton para guardar el estado actual del juego.
 	 */
 	private JButton botonGuardarPartida;
 
 	/**
-	 * Botón para iniciar una nueva partida.
+	 * Boton para iniciar una nueva partida.
 	 */
 	private JButton botonNuevaPartida;
 
 	/**
-	 * Botón para generar un nuevo tablero de Sudoku.
+	 * Boton para generar un nuevo tablero de Sudoku.
 	 */
 	private JButton botonNuevoTablero;
 
 	/**
-	 * Botón para reiniciar la partida actual, restableciendo el tablero.
+	 * Boton para reiniciar la partida actual, restableciendo el tablero.
 	 */
 	private JButton botonReiniciarPartida;
 
 	/**
-	 * Botón para mostrar la solución del tablero actual de Sudoku.
+	 * Boton para mostrar la solucion del tablero actual de Sudoku.
 	 */
 	private JButton botonSolucionar;
 
 	/**
-	 * Etiqueta para mostrar el número de fallos cometidos por el jugador.
+	 * Etiqueta para mostrar el numero de fallos cometidos por el jugador.
 	 */
 	private JLabel jLabelFallos;
 
@@ -65,7 +65,7 @@ public class Interfaz extends JFrame
 	private JPanel panelBotones;
 
 	/**
-	 * Panel que muestra información adicional, como el tiempo y los fallos.
+	 * Panel que muestra informacion adicional, como el tiempo y los fallos.
 	 */
 	private JPanel panelInfo;
 
@@ -80,7 +80,7 @@ public class Interfaz extends JFrame
 	private JPanel panelTablero;
 
 	/**
-	 * Panel que contiene el título o encabezado de la interfaz.
+	 * Panel que contiene el titulo o encabezado de la interfaz.
 	 */
 	private JPanel panelTitulo;
 
@@ -90,12 +90,12 @@ public class Interfaz extends JFrame
 	private final JLabel imagenSuperpuesta;
 
 	/**
-	 * Indice de la fila del tablero de Sudoku seleccionada por el usuario. Inicialmente es -1, indicando que ninguna fila está seleccionada.
+	 * Indice de la fila del tablero de Sudoku seleccionada por el usuario. Inicialmente es -1, indicando que ninguna fila esta seleccionada.
 	 */
 	private int filaSeleccionada;
 
 	/**
-	 * Indice de la columna del tablero de Sudoku seleccionada por el usuario. Inicialmente es -1, indicando que ninguna columna está seleccionada.
+	 * Indice de la columna del tablero de Sudoku seleccionada por el usuario. Inicialmente es -1, indicando que ninguna columna esta seleccionada.
 	 */
 	private int columnaSeleccionada;
 
@@ -110,7 +110,7 @@ public class Interfaz extends JFrame
 	private long tiempoTranscurrido;
 
 	/**
-	 * Variable que almacena el tiempo inicial en milisegundos al momento de empezar la partida o reanudar después de una pausa.
+	 * Variable que almacena el tiempo inicial en milisegundos al momento de empezar la partida o reanudar despues de una pausa.
 	 */
 	private long tiempoInicial;
 
@@ -125,34 +125,36 @@ public class Interfaz extends JFrame
 	private int fallos;
 
 	/**
-	 * Bandera para indicar si un botón ha sido presionado, utilizada para controlar ciertas lógicas en la interfaz.
+	 * Bandera para indicar si un boton ha sido presionado, utilizada para controlar ciertas logicas en la interfaz.
 	 */
 	private boolean botonPresionado;
 
 	/**
-	 * Ruta al archivo de sonido que se reproduce al alcanzar una condición de victoria en el juego.
+	 * Ruta al archivo de sonido que se reproduce al alcanzar una condicion de victoria en el juego.
 	 */
-	private final String rutaSonido = "victory.wav";
+	private final String rutaSonido;
 
 	/**
 	 * Constructor de la clase Interfaz. 
-	 * Inicializa los componentes y configura el entorno gráfico de la aplicación Sudoku, incluyendo el temporizador, 
-	 * el contador de fallos y la disposición del tablero de juego.
+	 * Inicializa los componentes y configura el entorno grafico de la aplicacion Sudoku, incluyendo el temporizador, 
+	 * el contador de fallos y la disposicion del tablero de juego.
 	 */
 	public Interfaz() 
 	{
 		initComponents();
 		iniciarTemporizador();
 		iniciarFallos();       
+		
+		Image icon = Toolkit.getDefaultToolkit().getImage("sudoku.png");
+        setIconImage(icon);
+        
+        rutaSonido = "victory.wav";
 
 		setTitle("SUDOKU : 'Nivel " + InterfazDificultad.getInstancia().getDificultadSeleccionada() + "'");
 		Juego_Sudoku.crearNuevaInstancia().generarSudokuConDificultad(InterfazDificultad.getInstancia().getDificultadSeleccionada());
 
 
 		setLocationRelativeTo(null);
-		panelTablero.setMinimumSize(new Dimension(692, 692));
-		panelTablero.setMaximumSize(new Dimension(692, 692));
-		panelTablero.setPreferredSize(new Dimension(692, 692));
 		panelTablero.setLayout(new GridLayout(9, 9));
 
 		ImageIcon imagen = new ImageIcon("sudokujpeg.png");
@@ -162,17 +164,11 @@ public class Interfaz extends JFrame
 
 		rellenarTablero();
 		botonPresionado = false;
-		botonNuevaPartida.setFocusPainted(false);
-		botonNuevoTablero.setFocusPainted(false);
-		botonReiniciarPartida.setFocusPainted(false);
-		botonGuardarPartida.setFocusPainted(false);
-		botonCargarPartida.setFocusPainted(false);
-		botonSolucionar.setFocusPainted(false);
 	}
 	
 	/**
-	 * Establece el número de fallos ocurridos durante el juego.
-	 * @param nuevoValor el nuevo número de fallos.
+	 * Establece el numero de fallos ocurridos durante el juego.
+	 * @param nuevoValor el nuevo numero de fallos.
 	 */
 	public void setFallos(int nuevoValor) 
 	{
@@ -180,8 +176,8 @@ public class Interfaz extends JFrame
 	}
 
 	/**
-	 * Obtiene el número de fallos ocurridos durante el juego.
-	 * @return el número de fallos.
+	 * Obtiene el numero de fallos ocurridos durante el juego.
+	 * @return el numero de fallos.
 	 */
 	public int getFallos() 
 	{
@@ -217,12 +213,13 @@ public class Interfaz extends JFrame
 
 	
 	/**
-	 * Implementación del patrón de diseño Singleton para obtener la instancia actual de la clase.
+	 * Implementacion del patron de disenio Singleton para obtener la instancia actual de la clase.
 	 * @return instancia actual de la clase Interfaz.
 	 */
 	public static Interfaz getInstancia()
 	{
-		if(instancia == null){
+		if(instancia == null)
+		{
 			instancia = new Interfaz();
 		}
 		return instancia;
@@ -232,13 +229,14 @@ public class Interfaz extends JFrame
 	 * Crea una nueva instancia de la clase Interfaz, anulando la instancia existente si la hay.
 	 * @return la nueva instancia de la clase Interfaz.
 	 */
-	public static Interfaz crearNuevaInstancia() {
+	public static Interfaz crearNuevaInstancia() 
+	{
 		instancia = null;
 		return getInstancia();
 	}
 
 	/**
-	 * Inicializa el contador de fallos a cero y actualiza su representación en la interfaz.
+	 * Inicializa el contador de fallos a cero y actualiza su representacion en la interfaz.
 	 */
 	public void iniciarFallos()
 	{
@@ -257,10 +255,13 @@ public class Interfaz extends JFrame
 	/**
 	 * Reproduce un sonido de victoria a partir de un archivo de audio especificado.
 	 */
-	public void reproducirSonido() {
-		try {
+	public void reproducirSonido() 
+	{
+		try 
+		{
 			File archivoSonido = new File(rutaSonido);
-			if (archivoSonido.exists()) {
+			if (archivoSonido.exists()) 
+			{
 				AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(archivoSonido);
 
 				Clip clip = AudioSystem.getClip();
@@ -278,9 +279,11 @@ public class Interfaz extends JFrame
 	public void iniciarTemporizador() 
 	{
 		tiempoInicial = System.currentTimeMillis();
-		timer = new Timer(10, new ActionListener() {
+		timer = new Timer(10, new ActionListener() 
+		{
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) 
+			{
 				tiempoTranscurrido = System.currentTimeMillis() - tiempoInicial;
 				actualizarTiempo(tiempoTranscurrido);
 			}
@@ -314,7 +317,7 @@ public class Interfaz extends JFrame
 	}
 
 	/**
-	 * Valida la entrada del usuario en un campo de texto específico del tablero de Sudoku.
+	 * Valida la entrada del usuario en un campo de texto especifico del tablero de Sudoku.
 	 * @param textField el campo de texto a validar.
 	 * @param fila la fila del tablero en la que se encuentra el campo de texto.
 	 * @param col la columna del tablero en la que se encuentra el campo de texto.
@@ -323,13 +326,15 @@ public class Interfaz extends JFrame
 	{
 		String texto = textField.getText();
 		Font fuente = textField.getFont();
-		final int nuevoTamanoLetra = 20; // Tamaño de letra deseado
+		final int nuevoTamanoLetra = 20; // Tamanio de letra deseado
 
 		// Verificar si la cadena de entrada esta vacia
 		if (texto.isEmpty()) 
 		{
 			Juego_Sudoku.getInstancia().getTablero()[fila][col].setValorDado(0); // Establecer el valor dado a 0 si la cadena esta vacia
-		} else {
+		} 
+		else 
+		{
 			try 
 			{
 				int enteredValue = Integer.parseInt(texto);
@@ -360,11 +365,11 @@ public class Interfaz extends JFrame
 
 						InterfazVictoria.crearNuevaInstancia();
 
-						// Establecer un temporizador para llamar al segundo constructor después de 5 segundos
+						// Establecer un temporizador para llamar al segundo constructor despues de 5 segundos
 						Timer delayTimer = new Timer(5000, new ActionListener() {
 							@Override
 							public void actionPerformed(ActionEvent e) {
-								// Llamada al segundo constructor después de 5 segundos
+								// Llamada al segundo constructor despues de 5 segundos
 								new InterfazRepetir().setVisible(true);
 							}
 						});
@@ -386,7 +391,7 @@ public class Interfaz extends JFrame
 	}
 
 	/**
-	 * Genera un nuevo tablero de Sudoku según la dificultad seleccionada.
+	 * Genera un nuevo tablero de Sudoku segun la dificultad seleccionada.
 	 */
 	public void generarNuevoSudokuConDificultad() {
 
@@ -396,8 +401,8 @@ public class Interfaz extends JFrame
 
 	/**
 	 * Define los bordes de las celdas del tablero para visualizar la estructura del Sudoku.
-	 * @param i índice de la fila de la celda.
-	 * @param j índice de la columna de la celda.
+	 * @param i indice de la fila de la celda.
+	 * @param j indice de la columna de la celda.
 	 * @param textField campo de texto de la celda.
 	 */
 	public void bordesCeldas(int i, int j, JTextField textField)
@@ -422,11 +427,11 @@ public class Interfaz extends JFrame
 		}
 		if (i == 8) 
 		{
-			abajo = 3; // Borde grueso en la última fila
+			abajo = 3; // Borde grueso en la ultima fila
 		}
 		if (j == 8) 
 		{
-			drch = 3; // Borde grueso en la última columna
+			drch = 3; // Borde grueso en la ultima columna
 		}
 
 		textField.setBorder(BorderFactory.createMatteBorder(arriba, izq, abajo, drch, Color.DARK_GRAY));
@@ -438,7 +443,7 @@ public class Interfaz extends JFrame
 	public void rellenarTablero()
 	{
 
-		// Reemplaza el texto en el documento solo si el nuevo texto es un solo dígito entre 1 y 9.
+		// Reemplaza el texto en el documento solo si el nuevo texto es un solo digito entre 1 y 9.
 		DocumentFilter filter = new DocumentFilter() {
 			@Override
 			public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
@@ -450,7 +455,7 @@ public class Interfaz extends JFrame
 				}
 			}
 		};
-		// Vuelve a llenar la interfaz con los números del nuevo Sudoku
+		// Vuelve a llenar la interfaz con los numeros del nuevo Sudoku
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				final int fila = i; // Definir 'fila' como final
@@ -545,7 +550,7 @@ public class Interfaz extends JFrame
 	}
 
 	/**
-	 * Actualiza la interfaz del tablero de Sudoku, limpiando y rellenándolo de nuevo.
+	 * Actualiza la interfaz del tablero de Sudoku, limpiando y rellenandolo de nuevo.
 	 */
 	public void updateInterfaz() {
 		panelTablero.removeAll(); // Elimina los componentes anteriores del panelTablero
@@ -554,8 +559,8 @@ public class Interfaz extends JFrame
 
 	/**
 	 * Resalta la fila y columna del tablero de Sudoku en la que se encuentra una celda seleccionada.
-	 * @param fila índice de la fila de la celda seleccionada.
-	 * @param col índice de la columna de la celda seleccionada.
+	 * @param fila indice de la fila de la celda seleccionada.
+	 * @param col indice de la columna de la celda seleccionada.
 	 */
 	public void resaltarFilaColumna(int fila, int col) {
 		Color filacol = new Color(226, 243, 227);
@@ -577,12 +582,12 @@ public class Interfaz extends JFrame
 			}
 		}
 	}
+	
 	/**
 	 * Quita el resaltado de una fila y columna especificadas en el tablero de Sudoku.
-	 * @param fila índice de la fila a desresaltar.
-	 * @param col índice de la columna a desresaltar.
+	 * @param fila indice de la fila a desresaltar.
+	 * @param col indice de la columna a desresaltar.
 	 */
-
 	public void quitarResaltadoFilaColumna(int fila, int col) {
 		Color customColor = new Color(238, 238, 238);
 		for (int i = 0; i < 9; i++) {
@@ -606,7 +611,7 @@ public class Interfaz extends JFrame
 
 	/**
 	 * Inicializa los componentes de la interfaz de usuario.
-	 * Este método es generado automáticamente y configura los elementos visuales de la interfaz.
+	 * Este metodo es generado automaticamente y configura los elementos visuales de la interfaz.
 	 */
 	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed" desc="Generated Code">                          
@@ -687,6 +692,9 @@ public class Interfaz extends JFrame
 		panelTablero.setBackground(new java.awt.Color(64, 64, 64));
 		panelTablero.setToolTipText("");
 		panelTablero.setAutoscrolls(true);
+		panelTablero.setMinimumSize(new Dimension(692, 692));
+        panelTablero.setMaximumSize(new Dimension(692, 692));
+        panelTablero.setPreferredSize(new Dimension(692, 692));
 
 		javax.swing.GroupLayout panelTableroLayout = new javax.swing.GroupLayout(panelTablero);
 		panelTablero.setLayout(panelTableroLayout);
@@ -710,6 +718,7 @@ public class Interfaz extends JFrame
 		botonNuevaPartida.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
 		botonNuevaPartida.setForeground(new java.awt.Color(255, 255, 255));
 		botonNuevaPartida.setText("NUEVA PARTIDA");
+		botonNuevaPartida.setFocusPainted(false);
 		botonNuevaPartida.setActionCommand("");
 		botonNuevaPartida.setAlignmentY(0.0F);
 		botonNuevaPartida.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -723,6 +732,7 @@ public class Interfaz extends JFrame
 		botonNuevoTablero.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
 		botonNuevoTablero.setForeground(new java.awt.Color(255, 255, 255));
 		botonNuevoTablero.setText("NUEVO TABLERO");
+		botonNuevoTablero.setFocusPainted(false);
 		botonNuevoTablero.setActionCommand("");
 		botonNuevoTablero.setAlignmentY(0.0F);
 		botonNuevoTablero.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -736,6 +746,7 @@ public class Interfaz extends JFrame
 		botonReiniciarPartida.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
 		botonReiniciarPartida.setForeground(new java.awt.Color(255, 255, 255));
 		botonReiniciarPartida.setText("REINICIAR PARTIDA");
+		botonReiniciarPartida.setFocusPainted(false);
 		botonReiniciarPartida.setActionCommand("");
 		botonReiniciarPartida.setAlignmentY(0.0F);
 		botonReiniciarPartida.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -749,6 +760,7 @@ public class Interfaz extends JFrame
 		botonGuardarPartida.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
 		botonGuardarPartida.setForeground(new java.awt.Color(255, 255, 255));
 		botonGuardarPartida.setText("GUARDAR PARTIDA");
+		botonGuardarPartida.setFocusPainted(false);
 		botonGuardarPartida.setActionCommand("");
 		botonGuardarPartida.setAlignmentY(0.0F);
 		botonGuardarPartida.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -762,6 +774,7 @@ public class Interfaz extends JFrame
 		botonCargarPartida.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
 		botonCargarPartida.setForeground(new java.awt.Color(255, 255, 255));
 		botonCargarPartida.setText("CARGAR PARTIDA");
+		botonCargarPartida.setFocusPainted(false);
 		botonCargarPartida.setActionCommand("");
 		botonCargarPartida.setAlignmentY(0.0F);
 		botonCargarPartida.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -775,6 +788,7 @@ public class Interfaz extends JFrame
 		botonSolucionar.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
 		botonSolucionar.setForeground(new java.awt.Color(255, 255, 255));
 		botonSolucionar.setText("SOLUCIONAR");
+		botonSolucionar.setFocusPainted(false);
 		botonSolucionar.setActionCommand("");
 		botonSolucionar.setAlignmentY(0.0F);
 		botonSolucionar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -830,17 +844,22 @@ public class Interfaz extends JFrame
 	}// </editor-fold>                        
 
 	/**
-	 * Acciones realizadas al presionar el botón para reiniciar la partida actual.
-	 * @param evt evento de acción.
+	 * Acciones realizadas al presionar el boton para reiniciar la partida actual.
+	 * @param evt evento de accion.
 	 */
-	private void botonReiniciarPartidaActionPerformed(java.awt.event.ActionEvent evt) {                                                      
+	private void botonReiniciarPartidaActionPerformed(ActionEvent evt) 
+	{                                                      
 		botonPresionado = false;
 		Component[] components = panelTablero.getComponents();
-		for (Component component : components) {
-			if (component instanceof JTextField textField) {
+		for (Component component : components) 
+		{
+			if (component instanceof JTextField textField) 
+			{
 				int fila = (panelTablero.getComponentZOrder(textField)) / 9;
 				int col = (panelTablero.getComponentZOrder(textField)) % 9;
-				if (!Juego_Sudoku.getInstancia().getTablero()[fila][col].isBase()) {
+				
+				if (!Juego_Sudoku.getInstancia().getTablero()[fila][col].isBase()) 
+				{
 					Juego_Sudoku.getInstancia().getTablero()[fila][col].setCorrecto(false);
 					textField.setText("");
 					textField.setForeground(Color.BLACK);
@@ -851,11 +870,11 @@ public class Interfaz extends JFrame
 	}                                                     
 
 	/**
-	 * Acciones realizadas al presionar el botón para guardar la partida actual.
-	 * @param evt evento de acción.
+	 * Acciones realizadas al presionar el boton para guardar la partida actual.
+	 * @param evt evento de accion.
 	 */
-	private void botonGuardarPartidaActionPerformed(java.awt.event.ActionEvent evt) {                                                    
-
+	private void botonGuardarPartidaActionPerformed(ActionEvent evt) 
+	{                                                    
 		pausarTemporizador();
 
 		// Obtener el nombre de la partida del usuario
@@ -879,9 +898,11 @@ public class Interfaz extends JFrame
 
 			myFile = new File(rutaPartidas + File.separator + "\\PartidasGuardadas\\Nivel_Dificil");
 		}
+		
 		String rutaCarpeta = myFile.getAbsolutePath();
 		selectorDeArchivo.setCurrentDirectory(new File(rutaCarpeta));
-		// Mostrar el cuadro de dialogo para seleccionar la ubicación y el nombre del archivo
+		
+		// Mostrar el cuadro de dialogo para seleccionar la ubicacion y el nombre del archivo
 		int seleccion = selectorDeArchivo.showSaveDialog(this);
 
 		if (seleccion == JFileChooser.APPROVE_OPTION) 
@@ -891,12 +912,13 @@ public class Interfaz extends JFrame
 
 			try 
 			{
-				// Resto del código permanece igual...
 				FileWriter escritorDeArchivo = new FileWriter(archivo);
 				BufferedWriter escritorBufferizado = new BufferedWriter(escritorDeArchivo);
 
-				for (int i = 0; i < 9; i++) {
-					for (int j = 0; j < 9; j++) {
+				for (int i = 0; i < 9; i++) 
+				{
+					for (int j = 0; j < 9; j++) 
+					{
 						int valorDado = Juego_Sudoku.getInstancia().getTablero()[i][j].getValorDado();
 						if (!Juego_Sudoku.getInstancia().getTablero()[i][j].isBase()) 
 						{
@@ -907,6 +929,7 @@ public class Interfaz extends JFrame
 					}
 				}
 				escritorBufferizado.write(Integer.toString(fallos));
+				
 				// Cerrar BufferedWriter
 				escritorBufferizado.close();
 
@@ -926,33 +949,41 @@ public class Interfaz extends JFrame
 	}                                                   
 
 	/**
-	 * Acciones realizadas al presionar el botón para cargar una partida guardada.
-	 * @param evt evento de acción.
+	 * Acciones realizadas al presionar el boton para cargar una partida guardada.
+	 * @param evt evento de accion.
 	 */
-	private void botonCargarPartidaActionPerformed(java.awt.event.ActionEvent evt) {                                                   
-
+	private void botonCargarPartidaActionPerformed(ActionEvent evt) 
+	{                                                   
 		pausarTemporizador();
 		botonPresionado = false;
+		
 		int contador = 0, fallosAux = 0;
+		
 		String rutaPartidas = System.getProperty("user.home") + File.separator + "Sudoku";
 		File myFile = new File(rutaPartidas + File.separator + "\\PartidasGuardadas");
 		String rutaCarpeta = myFile.getAbsolutePath();
+		
 		JFileChooser selectorDeArchivo = new JFileChooser();
 		selectorDeArchivo.setCurrentDirectory(new File(rutaCarpeta));
 		selectorDeArchivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
 		int seleccion = selectorDeArchivo.showOpenDialog(this);
 
-		if (seleccion == JFileChooser.APPROVE_OPTION) {
+		if (seleccion == JFileChooser.APPROVE_OPTION) 
+		{
 			File archivo = selectorDeArchivo.getSelectedFile();
 
-			try {
+			try 
+			{
 				BufferedReader lectorBufferizado = new BufferedReader(new FileReader(archivo));
 				String linea;
 
-				while ((linea = lectorBufferizado.readLine()) != null) {
-					for (int i = 0; i < 9; i++) {
-						for (int j = 0; j < 9; j++) {
+				while ((linea = lectorBufferizado.readLine()) != null) 
+				{
+					for (int i = 0; i < 9; i++) 
+					{
+						for (int j = 0; j < 9; j++) 
+						{
 							int numero = Integer.parseInt(linea);
 							if(numero >= 10 || numero == 0)
 							{
@@ -974,15 +1005,19 @@ public class Interfaz extends JFrame
 				}
 
 				fallosAux = getFallos();
+				
 				if(contador == 37)	InterfazDificultad.getInstancia().setDificultadSeleccionada("Facil");
 				else if(contador == 30) InterfazDificultad.getInstancia().setDificultadSeleccionada("Medio");
 				else if(contador == 23) InterfazDificultad.getInstancia().setDificultadSeleccionada("Dificil");
+				
 				setTitle("SUDOKU : 'Nivel " + InterfazDificultad.getInstancia().getDificultadSeleccionada() + "'");
 				lectorBufferizado.close();
+				
 				Juego_Sudoku.getInstancia().resolverSudoku();
 				updateInterfaz();
 				iniciarTemporizador();
 				iniciarFallos();
+				
 				setFallos(fallosAux);
 				actualizarNumeroFallos();
 				JOptionPane.showMessageDialog(this, "Partida cargada correctamente.");
@@ -995,18 +1030,20 @@ public class Interfaz extends JFrame
 		else{
 			tiempoInicial = System.currentTimeMillis() - tiempoPausado; // Restablece el tiempo inicial con el tiempo pausado
 			timer.start(); // Reanuda el temporizador con el tiempo pausado
-		} 
-
+		}
 	}                                                  
 
 	/**
-	 * Acciones realizadas al presionar el botón para solucionar el tablero de Sudoku.
-	 * @param evt evento de acción.
+	 * Acciones realizadas al presionar el boton para solucionar el tablero de Sudoku.
+	 * @param evt evento de accion.
 	 */
-	private void botonSolucionarActionPerformed(java.awt.event.ActionEvent evt) {                                                
+	private void botonSolucionarActionPerformed(ActionEvent evt) 
+	{                                                
 		botonPresionado = true;
-		for (int i = 0; i < 9; i++) {
-			for (int j = 0; j < 9; j++) {
+		for (int i = 0; i < 9; i++) 
+		{
+			for (int j = 0; j < 9; j++) 
+			{
 				JTextField textField = (JTextField) panelTablero.getComponent(i * 9 + j);
 				textField.setText(String.valueOf(Juego_Sudoku.getInstancia().getTablero()[i][j].getValorBueno()));
 			}
@@ -1014,20 +1051,22 @@ public class Interfaz extends JFrame
 	}                                               
 
 	/**
-	 * Acciones realizadas al presionar el botón para iniciar una nueva partida.
-	 * @param evt evento de acción.
+	 * Acciones realizadas al presionar el boton para iniciar una nueva partida.
+	 * @param evt evento de accion.
 	 */
-	private void botonNuevaPartidaActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+	private void botonNuevaPartidaActionPerformed(ActionEvent evt) 
+	{                                                  
 		timer.stop();
 		InterfazDificultad.crearNuevaInstancia().setVisible(true);
 		((JFrame) SwingUtilities.getWindowAncestor((Component)evt.getSource())).dispose(); // Cerrar la ventana principal
 	}                                                 
 
 	/**
-	 * Acciones realizadas al presionar el botón para generar un nuevo tablero de Sudoku.
-	 * @param evt evento de acción.
+	 * Acciones realizadas al presionar el boton para generar un nuevo tablero de Sudoku.
+	 * @param evt evento de accion.
 	 */
-	private void botonNuevoTableroActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+	private void botonNuevoTableroActionPerformed(ActionEvent evt) 
+	{                                                  
 		timer.stop();
 		generarNuevoSudokuConDificultad();
 		iniciarTemporizador();

@@ -6,7 +6,7 @@ import java.awt.event.*;
 
 /**
  * Clase InterfazVictoria, extiende de JFrame.
- * Esta clase crea una interfaz gráfica para mostrar una pantalla de victoria después de completar un juego de Sudoku.
+ * Esta clase crea una interfaz grafica para mostrar una pantalla de victoria despues de completar un juego de Sudoku.
  */
 public class InterfazVictoria extends JFrame 
 {
@@ -21,7 +21,7 @@ public class InterfazVictoria extends JFrame
 	private final Timer timer;
 
 	/**
-	 * Etiqueta que muestra el número de fallos cometidos durante el juego.
+	 * Etiqueta que muestra el numero de fallos cometidos durante el juego.
 	 */
 	private final JLabel labelFallos;
 
@@ -36,12 +36,12 @@ public class InterfazVictoria extends JFrame
 	private JPanel panel;
 
 	/**
-	 * Variable que mantiene la posición actual en el eje X del texto de victoria.
+	 * Variable que mantiene la posicion actual en el eje X del texto de victoria.
 	 */
 	private int posicionX;
 
 	/**
-	 * Instancia única de la clase InterfazVictoria, utilizada para implementar el patrón Singleton.
+	 * Instancia unica de la clase InterfazVictoria, utilizada para implementar el patron Singleton.
 	 */
 	private static InterfazVictoria instancia;
 
@@ -60,6 +60,9 @@ public class InterfazVictoria extends JFrame
 				frame.setEnabled(false);
 			}
 		}
+		
+		Image icon = Toolkit.getDefaultToolkit().getImage("sudoku.png");
+        setIconImage(icon);
 
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -110,7 +113,7 @@ public class InterfazVictoria extends JFrame
 	}
 
 	/**
-	 * Implementación del patrón de diseño Singleton para obtener la instancia actual de la clase.
+	 * Implementacion del patron de disenio Singleton para obtener la instancia actual de la clase.
 	 * @return Instancia actual de InterfazVictoria.
 	 */
 	public static InterfazVictoria getInstancia()
@@ -133,12 +136,12 @@ public class InterfazVictoria extends JFrame
 	}
 
 	/**
-	 * Mueve el texto de la etiqueta de victoria a través de la ventana.
+	 * Mueve el texto de la etiqueta de victoria a traves de la ventana.
 	 * El texto se mueve de derecha a izquierda y se reinicia una vez que sale de la pantalla.
 	 */
 	private void moverTexto() 
 	{
-		int velocidadMovimiento = 3; // Puedes ajustar la velocidad aquí
+		int velocidadMovimiento = 3; // Puedes ajustar la velocidad aqui
 
 		// Mover el texto de derecha a izquierda
 		posicionX += velocidadMovimiento;

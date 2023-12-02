@@ -1,36 +1,37 @@
 package Sudoku;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 /**
  * Clase InterfazDificultad, una subclase de JFrame que proporciona una interfaz grafica para la seleccion de la dificultad en un juego de Sudoku.
- * Permite al usuario elegir entre dificultades facil, media y dificil, y aplica el patron de diseño Singleton para asegurar una unica instancia de esta interfaz.
+ * Permite al usuario elegir entre dificultades facil, media y dificil, y aplica el patron de disenio Singleton para asegurar una unica instancia de esta interfaz.
  */
 public class InterfazDificultad extends JFrame
 {
 	/**
-	 * Botón para seleccionar la dificultad difícil en la interfaz de selección de dificultad.
+	 * Boton para seleccionar la dificultad dificil en la interfaz de seleccion de dificultad.
 	 */
 	private JButton botonDificil;
 
 	/**
-	 * Botón para seleccionar la dificultad fácil en la interfaz de selección de dificultad.
+	 * Boton para seleccionar la dificultad facil en la interfaz de seleccion de dificultad.
 	 */
 	private JButton botonFacil;
 
 	/**
-	 * Botón para seleccionar la dificultad media en la interfaz de selección de dificultad.
+	 * Boton para seleccionar la dificultad media en la interfaz de seleccion de dificultad.
 	 */
 	private JButton botonMedio;
 
 	/**
-	 * Panel que contiene los botones para la selección de la dificultad del juego.
+	 * Panel que contiene los botones para la seleccion de la dificultad del juego.
 	 */
 	private JPanel panelDificultad;
 
 	/**
-	 * Variable estática para almacenar la dificultad seleccionada como un string ("Facil", "Medio", "Dificil").
+	 * Variable estatica para almacenar la dificultad seleccionada como un string ("Facil", "Medio", "Dificil").
 	 */
 	static private String dificultadSeleccionada;
 
@@ -40,19 +41,23 @@ public class InterfazDificultad extends JFrame
 	private InterfazDificultadAbstracta dificultadSeleccionado;
 
 	/**
-	 * Instancia única de la clase InterfazDificultad, utilizada para implementar el patrón Singleton.
+	 * Instancia unica de la clase InterfazDificultad, utilizada para implementar el patron Singleton.
 	 */
 	private static InterfazDificultad instancia;
 	
 	
 	/**
 	 * Constructor de la clase InterfazDificultad.
-	 * Inicializa los componentes de la interfaz y establece propiedades de diseño como colores y bordes.
+	 * Inicializa los componentes de la interfaz y establece propiedades de disenio como colores y bordes.
 	 */
 	public InterfazDificultad() 
 	{
 		Color c = new Color(87,115,129);
 		initComponents();
+		
+		Image icon = Toolkit.getDefaultToolkit().getImage("sudoku.png");
+        setIconImage(icon);
+        
 		panelDificultad.setBorder(BorderFactory.createLineBorder(c, 3));
 		setTitle("DIFICULTAD");
 		setLocationRelativeTo(null);
@@ -81,10 +86,33 @@ public class InterfazDificultad extends JFrame
 	{
 		dificultadSeleccionada = dificultadseleccionada;
 	}
+	
+	/**
+	 * Obtiene la instancia actual de la clase InterfazDificultad, aplicando el patron Singleton.
+	 * @return La instancia actual de InterfazDificultad.
+	 */
+	public static InterfazDificultad getInstancia()
+	{
+		if(instancia == null)
+		{
+			instancia = new InterfazDificultad();
+		}
+		return instancia;
+	}
+
+	/**
+	 * Crea y devuelve una nueva instancia de InterfazDificultad, anulando la existente si la hay.
+	 * @return La nueva instancia de InterfazDificultad.
+	 */
+	public static InterfazDificultad crearNuevaInstancia() 
+	{
+		instancia = null;
+		return getInstancia();
+	}
 
 	/**
 	 * Inicializa los componentes de la interfaz de usuario.
-	 * Este método es generado automáticamente y configura los elementos visuales de la interfaz.
+	 * Este metodo es generado automaticamente y configura los elementos visuales de la interfaz.
 	 */
 	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed" desc="Generated Code">                          
@@ -172,37 +200,37 @@ public class InterfazDificultad extends JFrame
 	}// </editor-fold>                        
 
 	/**
-	 * Acción realizada al presionar el botón para la dificultad media.
+	 * Accion realizada al presionar el boton para la dificultad media.
 	 * Establece la dificultad del juego a media y cierra la ventana actual.
-	 * @param evt El evento de acción.
+	 * @param evt El evento de accion.
 	 */
-	private void botonMedioActionPerformed(java.awt.event.ActionEvent evt) 
+	private void botonMedioActionPerformed(ActionEvent evt) 
 	{                                           
 		establecerDificultad(new InterfazMedio());
 	}                                          
 
 	/**
-	 * Acción realizada al presionar el botón para la dificultad difícil.
-	 * Establece la dificultad del juego a difícil y cierra la ventana actual.
-	 * @param evt El evento de acción.
+	 * Accion realizada al presionar el boton para la dificultad dificil.
+	 * Establece la dificultad del juego a dificil y cierra la ventana actual.
+	 * @param evt El evento de accion.
 	 */
-	private void botonDificilActionPerformed(java.awt.event.ActionEvent evt) 
+	private void botonDificilActionPerformed(ActionEvent evt) 
 	{                                             
 		establecerDificultad(new InterfazDificil());
 	}                                            
 
 	/**
-	 * Acción realizada al presionar el botón para la dificultad fácil.
-	 * Establece la dificultad del juego a fácil y cierra la ventana actual.
-	 * @param evt El evento de acción.
+	 * Accion realizada al presionar el boton para la dificultad facil.
+	 * Establece la dificultad del juego a facil y cierra la ventana actual.
+	 * @param evt El evento de accion.
 	 */
-	private void botonFacilActionPerformed(java.awt.event.ActionEvent evt) 
+	private void botonFacilActionPerformed(ActionEvent evt) 
 	{                                           
 		establecerDificultad(new InterfazFacil());
 	}                                          
 
 	/**
-	 * Establece la dificultad del juego basándose en la instancia de InterfazDificultadAbstracta proporcionada.
+	 * Establece la dificultad del juego basandose en la instancia de InterfazDificultadAbstracta proporcionada.
 	 * Actualiza la dificultad seleccionada y cierra la ventana actual.
 	 * @param dificultad La instancia de InterfazDificultadAbstracta que define la dificultad a establecer.
 	 */
@@ -213,28 +241,5 @@ public class InterfazDificultad extends JFrame
 		this.dificultadSeleccionado.establecerDificultad();
 
 		this.dispose();
-	}
-
-	/**
-	 * Obtiene la instancia actual de la clase InterfazDificultad, aplicando el patrón Singleton.
-	 * @return La instancia actual de InterfazDificultad.
-	 */
-	public static InterfazDificultad getInstancia()
-	{
-		if(instancia == null)
-		{
-			instancia = new InterfazDificultad();
-		}
-		return instancia;
-	}
-
-	/**
-	 * Crea y devuelve una nueva instancia de InterfazDificultad, anulando la existente si la hay.
-	 * @return La nueva instancia de InterfazDificultad.
-	 */
-	public static InterfazDificultad crearNuevaInstancia() 
-	{
-		instancia = null;
-		return getInstancia();
 	}
 }

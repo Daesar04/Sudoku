@@ -3,23 +3,37 @@ package Sudoku;
 import java.util.Random;
 
 /**
- * La clase Juego_Sudoku extiende de Tablero_Sudoku y gestiona las reglas y lógica del juego Sudoku.
+ * La clase Juego_Sudoku extiende de Tablero_Sudoku y gestiona las reglas y logica del juego Sudoku.
  */
 public class Juego_Sudoku extends Tablero_Sudoku
 {
 	/**
-	 * Instancia única de la clase Juego_Sudoku.
+	 * Instancia unica de la clase Juego_Sudoku.
 	 */
 	private static Juego_Sudoku instancia;
+	
+	/**
+	 * Almacena la primera solucion encontrada del Sudoku.
+	 * Se utiliza para comparar con otras soluciones potenciales y determinar si hay mas de una solucion para el Sudoku.
+	 */
+	private Celda[][] primeraSolucion;
 
 	/**
-	 * Obtiene la instancia única de Juego_Sudoku.
+	 * Constructor de la clase Juego_Sudoku.
+	 * Inicializa la instancia con una solucion inicial nula, indicando que aun no se ha encontrado una solucion para el Sudoku.
+	 */
+	public Juego_Sudoku() 
+	{
+		primeraSolucion = null;
+	}
+
+	/**
+	 * Obtiene la instancia unica de Juego_Sudoku.
 	 * @return instancia actual de Juego_Sudoku.
 	 */
 	public static Juego_Sudoku getInstancia()
 	{
-		if(instancia == null)
-		{
+		if(instancia == null){
 			instancia = new Juego_Sudoku();
 		}
 		return instancia;
@@ -29,17 +43,16 @@ public class Juego_Sudoku extends Tablero_Sudoku
 	 * Crea una nueva instancia de Juego_Sudoku.
 	 * @return nueva instancia de Juego_Sudoku.
 	 */
-	public static Juego_Sudoku crearNuevaInstancia() 
-	{
+	public static Juego_Sudoku crearNuevaInstancia() {
 		instancia = null;
 		return getInstancia();
 	}
 
-	// Métodos de lógica del juego
+	// Metodos de logica del juego
 
 	/**
-	 * Comprueba si el tablero de Sudoku está resuelto.
-	 * @return true si el tablero está completamente resuelto, false de lo contrario.
+	 * Comprueba si el tablero de Sudoku esta resuelto.
+	 * @return true si el tablero esta completamente resuelto, false de lo contrario.
 	 */
 	public boolean resuelto() 
 	{
@@ -57,11 +70,11 @@ public class Juego_Sudoku extends Tablero_Sudoku
 	}
 
 	/**
-	 * Verifica si el número ingresado en una casilla es válido en esa fila.
+	 * Verifica si el numero ingresado en una casilla es valido en esa fila.
 	 * @param fila La fila en la que se encuentra la casilla.
 	 * @param columna La columna en la que se encuentra la casilla.
-	 * @param num El número a verificar.
-	 * @return true Si el número es válido en la fila, false de lo contrario.
+	 * @param num El numero a verificar.
+	 * @return true Si el numero es valido en la fila, false de lo contrario.
 	 */
 	public boolean posicionValidaFila(int fila, int columna, int num)
 	{
@@ -77,11 +90,11 @@ public class Juego_Sudoku extends Tablero_Sudoku
 	}
 
 	/**
-	 * Verifica si el número ingresado en una casilla es válido en esa columna.
+	 * Verifica si el numero ingresado en una casilla es valido en esa columna.
 	 * @param fila La fila en la que se encuentra la casilla.
 	 * @param columna La columna en la que se encuentra la casilla.
-	 * @param num El número a verificar.
-	 * @return true Si el número es válido en la columna, false de lo contrario.
+	 * @param num El numero a verificar.
+	 * @return true Si el numero es valido en la columna, false de lo contrario.
 	 */
 	public boolean posicionValidaColumna(int fila, int columna, int num) 
 	{
@@ -97,11 +110,11 @@ public class Juego_Sudoku extends Tablero_Sudoku
 	}
 
 	/**
-	 * Verifica si el número ingresado en una casilla de 3x3 es válido.
+	 * Verifica si el numero ingresado en una casilla de 3x3 es valido.
 	 * @param fila La fila en la que se encuentra la casilla.
 	 * @param columna La columna en la que se encuentra la casilla.
-	 * @param num El número a verificar.
-	 * @return true Si el número es válido en la región 3x3, false de lo contrario.
+	 * @param num El numero a verificar.
+	 * @return true Si el numero es valido en la region 3x3, false de lo contrario.
 	 */
 	public boolean posicionValida3x3(int fila, int columna, int num) 
 	{
@@ -121,36 +134,155 @@ public class Juego_Sudoku extends Tablero_Sudoku
 	}
 
 	/**
-	 * Resuelve el Sudoku recursivamente utilizando la técnica de "backtracking".
-	 * @return true si el Sudoku se resuelve, false si no se puede resolver.
+	 * Resuelve el Sudoku verificando si hay multiples soluciones. 
+	 * Utiliza un enfoque recursivo de backtracking para encontrar una solucion y luego verifica si hay otra.
+	 * Almacena temporalmente la primera solucion encontrada para compararla con siguientes soluciones.
+	 * @return true si el Sudoku tiene una unica solucion, false si tiene multiples soluciones o no se puede resolver.
 	 */
 	public boolean resolverSudoku() 
 	{
-		for (int fila = 0; fila < 9; fila++) 
+		if (primeraSolucion == null) 
 		{
-			for (int columna = 0; columna < 9; columna++) 
+			if (resolverYGuardar(0, 0)) 
 			{
-				if (this.getTablero()[fila][columna].getValorBueno() == 0) 
-				{
-					for (int numero = 1; numero < 10; numero++) 
-					{
-						if (posicionValidaFila(fila, columna, numero) && posicionValidaColumna(fila, columna, numero) && posicionValida3x3(fila, columna, numero)) 
-						{
-							this.getTablero()[fila][columna].setValorBueno(numero);
+				primeraSolucion = copiarTablero(getTablero());
+				return resolverSudoku();
+			}
+			return false;
+		} else {
+			if (resolverYComparar(0, 0)) 
+			{
+				primeraSolucion = null;
+				return false;
+			}
+			primeraSolucion = null;
+			return true;
+		}
+	}
 
-							if (resolverSudoku()) 
-							{
-								return true;
-							} else {
-								this.getTablero()[fila][columna].setValorBueno(0);
-							}
-						}
-					}
+	/**
+	 * Resuelve el Sudoku recursivamente y guarda la primera solucion encontrada.
+	 * Este metodo implementa la tecnica de backtracking para probar diferentes combinaciones de numeros.
+	 * @param fila La fila actual en la que se esta trabajando.
+	 * @param columna La columna actual en la que se esta trabajando.
+	 * @return true si se encuentra una solucion valida, false de lo contrario.
+	 */
+	private boolean resolverYGuardar(int fila, int columna) 
+	{
+		if (fila == 9) 
+		{
+			return true; // Se encontro una solucion
+		}
+
+		int siguienteFila = fila;
+		int siguienteColumna = columna + 1;
+
+		if (siguienteColumna == 9) 
+		{
+			siguienteFila++;
+			siguienteColumna = 0;
+		}
+
+		if (getTablero()[fila][columna].getValorBueno() != 0) 
+		{
+			return resolverYGuardar(siguienteFila, siguienteColumna);
+		}
+
+		for (int num = 1; num <= 9; num++) 
+		{
+			if (posicionValidaFila(fila, columna, num) && posicionValidaColumna(fila, columna, num) && posicionValida3x3(fila, columna, num)) 
+			{
+				getTablero()[fila][columna].setValorBueno(num);
+				if (resolverYGuardar(siguienteFila, siguienteColumna)) 
+				{
+					return true;
+				}
+				getTablero()[fila][columna].setValorBueno(0); // Backtracking
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Resuelve el Sudoku recursivamente y compara la solucion encontrada con la primera solucion almacenada.
+	 * Este metodo se utiliza para determinar si hay mas de una solucion posible para el Sudoku.
+	 * @param fila La fila actual en la que se esta trabajando.
+	 * @param columna La columna actual en la que se esta trabajando.
+	 * @return true si se encuentra una solucion diferente a la primera, false de lo contrario.
+	 */
+	private boolean resolverYComparar(int fila, int columna) 
+	{
+		if (fila == 9) 
+		{
+			return !esIgualAPrimeraSolucion(); // Compara con la primera solucion
+		}
+
+		int siguienteFila = fila;
+		int siguienteColumna = columna + 1;
+
+		if (siguienteColumna == 9) 
+		{
+			siguienteFila++;
+			siguienteColumna = 0;
+		}
+
+		if (getTablero()[fila][columna].getValorBueno() != 0) 
+		{
+			return resolverYComparar(siguienteFila, siguienteColumna);
+		}
+
+		for (int num = 1; num <= 9; num++) 
+		{
+			if (posicionValidaFila(fila, columna, num) && posicionValidaColumna(fila, columna, num) && posicionValida3x3(fila, columna, num)) 
+			{
+				getTablero()[fila][columna].setValorBueno(num);
+				if (resolverYComparar(siguienteFila, siguienteColumna)) 
+				{
+					return true;
+				}
+				getTablero()[fila][columna].setValorBueno(0); // Backtracking
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Compara el tablero actual de Sudoku con la primera solucion almacenada para verificar si son iguales.
+	 * @return true si el tablero actual es igual a la primera solucion, false de lo contrario.
+	 */
+	private boolean esIgualAPrimeraSolucion() 
+	{
+		for (int i = 0; i < 9; i++) 
+		{
+			for (int j = 0; j < 9; j++) 
+			{
+				if (this.getTablero()[i][j].getValorBueno() != primeraSolucion[i][j].getValorBueno()) 
+				{
 					return false;
 				}
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * Crea y devuelve una copia del tablero de Sudoku actual.
+	 * Este metodo se utiliza para almacenar una copia de la solucion encontrada.
+	 * @param tablero El tablero de Sudoku a copiar.
+	 * @return Una copia del tablero de Sudoku.
+	 */
+	private Celda[][] copiarTablero(Celda[][] tablero) 
+	{
+		Celda[][] copia = new Celda[tablero.length][tablero[0].length];
+		for (int i = 0; i < tablero.length; i++) 
+		{
+			for (int j = 0; j < tablero[i].length; j++) 
+			{
+				copia[i][j] = new Celda();
+				copia[i][j].setValorBueno(tablero[i][j].getValorBueno());
+			}
+		}
+		return copia;
 	}
 
 	/**

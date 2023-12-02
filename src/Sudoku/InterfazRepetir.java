@@ -1,10 +1,9 @@
 package Sudoku;
 
-import java.awt.Window;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
-import java.util.Random;
-import javax.swing.JFrame;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+import javax.swing.*;
 
 /**
  * Clase InterfazRepetir, extiende de JFrame.
@@ -13,38 +12,38 @@ import javax.swing.JFrame;
 public class InterfazRepetir extends javax.swing.JFrame 
 {    
 	/**
-	 * Botón para rechazar la oferta de jugar otra partida.
+	 * Boton para rechazar la oferta de jugar otra partida.
 	 */
-	private javax.swing.JButton botonNo;
+	private JButton botonNo;
 
 	/**
-	 * Botón para aceptar la oferta de jugar otra partida.
+	 * Boton para aceptar la oferta de jugar otra partida.
 	 */
-	private javax.swing.JButton botonSi;
+	private JButton botonSi;
 
 	/**
 	 * Etiqueta que muestra la pregunta al usuario sobre si quiere jugar otra partida.
 	 */
-	private javax.swing.JLabel labelPregunta;
+	private JLabel labelPregunta;
 
 	/**
 	 * Panel que contiene los componentes de la interfaz para repetir la partida.
 	 */
-	private javax.swing.JPanel panelRepetir;
+	private JPanel panelRepetir;
 
 	/**
-	 * Contador para el número de veces que el botón "No" se ha movido para evitar ser presionado.
+	 * Contador para el numero de veces que el boton "No" se ha movido para evitar ser presionado.
 	 */
 	private int contadorNo;
 
 	/**
-	 * Objeto Random para generar posiciones aleatorias para el botón "No".
+	 * Objeto Random para generar posiciones aleatorias para el boton "No".
 	 */
 	private final Random random;
 	
      /**
      * Constructor de la clase InterfazRepetir.
-     * Inicializa los componentes de la interfaz y configura el comportamiento de los botones "Sí" y "No".
+     * Inicializa los componentes de la interfaz y configura el comportamiento de los botones "Si" y "No".
      */
     public InterfazRepetir() 
     {
@@ -53,14 +52,20 @@ public class InterfazRepetir extends javax.swing.JFrame
         botonSi.setFocusPainted(false);
         botonNo.setFocusPainted(false);
         
+        Image icon = Toolkit.getDefaultToolkit().getImage("sudoku.png");
+        setIconImage(icon);
+        
         contadorNo = 0;
         random = new Random();
         
-        // Agregar MouseMotionListener al botón "No"
-        botonNo.addMouseMotionListener(new MouseMotionAdapter() {
+        // Agregar MouseMotionListener al boton "No"
+        botonNo.addMouseMotionListener(new MouseMotionAdapter() 
+        {
             @Override
-            public void mouseMoved(MouseEvent e) {
-                if(contadorNo < 5){
+            public void mouseMoved(MouseEvent e) 
+            {
+                if(contadorNo < 5)
+                {
                     moverBotonAleatorio();
                 }
             }
@@ -69,7 +74,7 @@ public class InterfazRepetir extends javax.swing.JFrame
 
     /**
      * Inicializa los componentes de la interfaz de usuario.
-     * Este método es generado automáticamente y configura los elementos visuales de la interfaz.
+     * Este metodo es generado automaticamente y configura los elementos visuales de la interfaz.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
@@ -95,7 +100,7 @@ public class InterfazRepetir extends javax.swing.JFrame
         botonSi.setBackground(new java.awt.Color(102, 102, 102));
         botonSi.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         botonSi.setForeground(new java.awt.Color(255, 255, 255));
-        botonSi.setText("Sí");
+        botonSi.setText("Si");
         botonSi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonSiActionPerformed(evt);
@@ -156,10 +161,11 @@ public class InterfazRepetir extends javax.swing.JFrame
     }// </editor-fold>                        
     
     /**
-     * Mueve el botón "No" a una posición aleatoria dentro del panel.
-     * Este método se activa cuando el mouse se mueve sobre el botón "No".
+     * Mueve el boton "No" a una posicion aleatoria dentro del panel.
+     * Este metodo se activa cuando el mouse se mueve sobre el boton "No".
      */
-    private void moverBotonAleatorio() {
+    private void moverBotonAleatorio() 
+    {
         contadorNo++;
         int panelWidth = panelRepetir.getWidth() - botonNo.getWidth();
         int panelHeight = panelRepetir.getHeight() - botonNo.getHeight();
@@ -175,31 +181,35 @@ public class InterfazRepetir extends javax.swing.JFrame
     }
     
     /**
-     * Determina si una posición dada toca el área del botón "Sí".
-     * @param x La coordenada x de la posición.
-     * @param y La coordenada y de la posición.
-     * @return true si la posición toca el botón "Sí", de lo contrario false.
+     * Determina si una posicion dada toca el area del boton "Si".
+     * @param x La coordenada x de la posicion.
+     * @param y La coordenada y de la posicion.
+     * @return true si la posicion toca el boton "Si", de lo contrario false.
      */
-    private boolean posicionToqueBotonSi(int x, int y) {
-        // Obtener las posiciones del botón "SI"
+    private boolean posicionToqueBotonSi(int x, int y) 
+    {
+        // Obtener las posiciones del boton "SI"
         int botonSiX = botonSi.getX();
         int botonSiY = botonSi.getY();
 
-        // Verificar si la posición toca al botón "SI"
+        // Verificar si la posicion toca al boton "SI"
         return (x >= botonSiX && x <= botonSiX + botonSi.getWidth() && y >= botonSiY && y <= botonSiY + botonSi.getHeight());
     }
     
     /**
-     * Acción realizada al presionar el botón "Sí".
-     * Cierra la ventana actual y abre la interfaz de selección de dificultad para empezar una nueva partida.
-     * @param evt El evento de acción.
+     * Accion realizada al presionar el boton "Si".
+     * Cierra la ventana actual y abre la interfaz de seleccion de dificultad para empezar una nueva partida.
+     * @param evt El evento de accion.
      */
-    private void botonSiActionPerformed(java.awt.event.ActionEvent evt) {                                        
+    private void botonSiActionPerformed(ActionEvent evt) 
+    {                                        
         setVisible(false);
         
         Window[] ventanas = Window.getWindows();
-        for (Window ventana : ventanas) {
-            if (ventana instanceof JFrame && ventana != this) {
+        for (Window ventana : ventanas) 
+        {
+            if (ventana instanceof JFrame && ventana != this) 
+            {
                 ventana.dispose();
             }
         }
@@ -208,12 +218,13 @@ public class InterfazRepetir extends javax.swing.JFrame
     }                                       
 
     /**
-     * Acción realizada al presionar el botón "No".
-     * Cierra la ventana actual y finaliza la aplicación.
-     * @param evt El evento de acción.
+     * Accion realizada al presionar el boton "No".
+     * Cierra la ventana actual y finaliza la aplicacion.
+     * @param evt El evento de accion.
      */
-    private void botonNoActionPerformed(java.awt.event.ActionEvent evt) {                                        
+    private void botonNoActionPerformed(ActionEvent evt) 
+    {                                        
             dispose(); // Cierra la ventana
-            System.exit(0); // Cierra la aplicación
+            System.exit(0); // Cierra la aplicacion
     }                                       
 }

@@ -1,8 +1,8 @@
 package Sudoku;
 
 /**
- * Clase InterfazMedio, una extensión de InterfazDificultadAbstracta que representa una interfaz con dificultad media.
- * Esta clase establece específicamente la dificultad del juego como "Medio".
+ * Clase InterfazMedio, una extension de InterfazDificultadAbstracta que representa una interfaz con dificultad media.
+ * Esta clase establece especificamente la dificultad del juego como "Medio".
  */
 public class InterfazMedio extends InterfazDificultadAbstracta 
 {
@@ -16,7 +16,7 @@ public class InterfazMedio extends InterfazDificultadAbstracta
     }
 
     /**
-     * Implementa el método abstracto establecerDificultad.
+     * Implementa el metodo abstracto establecerDificultad.
      * Crea y muestra una nueva instancia de la interfaz principal del juego, configurando la dificultad a nivel medio.
      */
     @Override

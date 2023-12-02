@@ -8,7 +8,7 @@ import javax.swing.*;
  * Clase InterfazPantallaCarga, extiende de JFrame e implementa la interfaz PantallaCarga.
  * Esta clase proporciona una interfaz de usuario para una pantalla de carga con una barra de progreso.
  */
-public class InterfazPantallaCarga extends javax.swing.JFrame implements PantallaCarga 
+public class InterfazPantallaCarga extends JFrame implements PantallaCarga 
 {
 	/** Barra de progreso que muestra el avance de la carga en la pantalla de carga. */
 	private JProgressBar barraProgreso;
@@ -22,7 +22,7 @@ public class InterfazPantallaCarga extends javax.swing.JFrame implements Pantall
 	private JLabel imagenSuperpuesta;
 
 	/**
-	 * Temporizador que controla la actualización de la barra de progreso.
+	 * Temporizador que controla la actualizacion de la barra de progreso.
 	 */
 	private Timer temporizador;
 
@@ -33,11 +33,15 @@ public class InterfazPantallaCarga extends javax.swing.JFrame implements Pantall
 	
 	/**
 	 * Constructor de la clase InterfazPantallaCarga.
-	 * Inicializa los componentes de la interfaz, establece la ubicación y configura la barra de progreso.
+	 * Inicializa los componentes de la interfaz, establece la ubicacion y configura la barra de progreso.
 	 */
-	public InterfazPantallaCarga() {
+	public InterfazPantallaCarga() 
+	{
 		initComponents();
 		setLocationRelativeTo(null);
+		
+		Image icon = Toolkit.getDefaultToolkit().getImage("sudoku.png");
+        setIconImage(icon);
 
 		ImageIcon imagen = new ImageIcon("pantallaCarga.jpeg");
 		imagenSuperpuesta = new JLabel(imagen);
@@ -47,9 +51,11 @@ public class InterfazPantallaCarga extends javax.swing.JFrame implements Pantall
 		cont = -1;
 		barraProgreso.setValue(0);
 		barraProgreso.setStringPainted(true);
-		temporizador = new Timer(40, new ActionListener() {
+		temporizador = new Timer(40, new ActionListener() 
+		{
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) 
+			{
 				actualizarProgreso();
 			}
 		});
@@ -58,7 +64,7 @@ public class InterfazPantallaCarga extends javax.swing.JFrame implements Pantall
 
 	/**
 	 * Inicializa los componentes de la interfaz de usuario.
-	 * Este método es generado automáticamente y configura los elementos visuales de la interfaz.
+	 * Este metodo es generado automaticamente y configura los elementos visuales de la interfaz.
 	 */
 	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed" desc="Generated Code">                          
@@ -114,16 +120,20 @@ public class InterfazPantallaCarga extends javax.swing.JFrame implements Pantall
 	/**
 	 * Actualiza el progreso de la barra de progreso y, una vez completado, inicia un temporizador para cambiar la interfaz.
 	 */
-	public void actualizarProgreso() {
+	public void actualizarProgreso() 
+	{
 		cont++;
 		barraProgreso.setValue(cont);
 
-		if (cont == 100) {
+		if (cont == 100) 
+		{
 			temporizador.stop();
 
-			Timer segundoTemporizador = new Timer(400, new ActionListener() {
+			Timer segundoTemporizador = new Timer(400, new ActionListener() 
+			{
 				@Override
-				public void actionPerformed(ActionEvent e) {
+				public void actionPerformed(ActionEvent e) 
+				{
 					cambiarInterfaz();
 				}
 			});
@@ -133,9 +143,10 @@ public class InterfazPantallaCarga extends javax.swing.JFrame implements Pantall
 	}
 
 	/**
-	 * Cambia la interfaz actual a la interfaz de selección de dificultad después de que se completa la carga.
+	 * Cambia la interfaz actual a la interfaz de seleccion de dificultad despues de que se completa la carga.
 	 */
-	public void cambiarInterfaz() {
+	public void cambiarInterfaz() 
+	{
 		// Hacer que la interfaz de carga no sea visible
 		setVisible(false);
 

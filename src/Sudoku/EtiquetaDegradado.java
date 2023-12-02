@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.JLabel;
 
 /**
- * Clase EtiquetaDegradado, una extensión de JLabel que implementa un efecto de degradado en el texto.
+ * Clase EtiquetaDegradado, una extension de JLabel que implementa un efecto de degradado en el texto.
  * El degradado se realiza desde un color gris a negro.
  */
 public class EtiquetaDegradado extends JLabel 
@@ -12,7 +12,7 @@ public class EtiquetaDegradado extends JLabel
 	/**
      * Constructor de la clase EtiquetaDegradado.
      * Inicializa una nueva instancia de JLabel con el texto proporcionado.
-     * @param text El texto que se mostrará en la etiqueta.
+     * @param text El texto que se mostrara en la etiqueta.
      */
     public EtiquetaDegradado(String text) 
     {
@@ -20,7 +20,7 @@ public class EtiquetaDegradado extends JLabel
     }
 
     /**
-     * Sobrescribe el método paintComponent de JLabel para dibujar el texto con un efecto de degradado.
+     * Sobrescribe el metodo paintComponent de JLabel para dibujar el texto con un efecto de degradado.
      * El degradado se realiza desde un color gris (87, 115, 129) en la parte superior a negro en la parte inferior.
      * @param g El objeto Graphics utilizado para dibujar la etiqueta.
      */
