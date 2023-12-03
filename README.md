@@ -25,7 +25,7 @@ El programa verifica si el jugador ha completado el tablero correctamente y mues
 ### 6. Niveles de Dificultad
 Ofrece la opción de seleccionar diferentes niveles de dificultad para adaptarse a las preferencias del jugador, desde tableros fáciles para principiantes hasta tableros más desafiantes para jugadores experimentados.
 
-## Patrones de Diseño Utilizados
+## Patrón de Diseño Utilizado
 
 ### Singleton Modificado
 En este proyecto, hemos implementado una variante del patrón de diseño Singleton para gestionar las instancias de las clases `Interfaz`, `InterfazDificultad`, `InterfazVictoria` y `Juego_Sudoku`. 
