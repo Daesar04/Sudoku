@@ -25,6 +25,22 @@ El programa verifica si el jugador ha completado el tablero correctamente y mues
 ### 6. Niveles de Dificultad
 Ofrece la opción de seleccionar diferentes niveles de dificultad para adaptarse a las preferencias del jugador, desde tableros fáciles para principiantes hasta tableros más desafiantes para jugadores experimentados.
 
+## Patrones de Diseño Utilizados
+
+### Singleton Modificado
+En este proyecto, hemos implementado una variante del patrón de diseño Singleton para gestionar la instancia de la clase `Interfaz`. 
+
+#### Implementación:
+- **Método `getInstancia`**: 
+  Este método sigue el enfoque tradicional del patrón Singleton. 
+  ```java
+  public static Interfaz getInstancia() {
+      if(instancia == null) {
+          instancia = new Interfaz();
+      }
+      return instancia;
+  }
+
 
 
 ## Esquema UML de clases
