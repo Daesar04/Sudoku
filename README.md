@@ -43,7 +43,7 @@ En este proyecto, hemos implementado una variante del patrón de diseño Singlet
 
 - **Método `crearNuevaInstancia`**:
    Esta es una extensión del patrón Singleton convencional. En nuestro juego, es necesario restablecer o reiniciar el estado del juego para comenzar una nueva partida de Sudoku.
-   Este método anula la instancia existente (si la hay) y crea una nueva, garantizando que el estado del juego se reinicie completamente para la nueva partida.
+   Este método anula la instancia existente y crea una nueva, garantizando que el estado del juego se reinicie completamente para la nueva partida.
    ```java
    public static Interfaz crearNuevaInstancia() {
      instancia = null;
@@ -52,10 +52,6 @@ En este proyecto, hemos implementado una variante del patrón de diseño Singlet
 
 #### Razón de la Modificación:
    La necesidad de esta adaptación surge de la naturaleza del juego de Sudoku. Cada partida es independiente y requiere un estado de interfaz nuevo y limpio. El método `crearNuevaInstancia` permite a los jugadores iniciar una nueva partida sin retener ningún estado de partidas anteriores, lo cual es crucial para la experiencia de juego.
-
-### Sonidos y Efectos de Audio
-  Nuestra aplicación de Sudoku incluye una variedad de sonidos y efectos de audio para mejorar la experiencia del jugador. Estos efectos sonoros acompañan acciones como la inserción de números, errores, y la finalización exitosa del juego, añadiendo una dimensión auditiva inmersiva y gratificante al juego.
-
 
 ## Esquema UML de clases
 
