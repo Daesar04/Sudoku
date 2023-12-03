@@ -28,7 +28,7 @@ Ofrece la opción de seleccionar diferentes niveles de dificultad para adaptarse
 ## Patrones de Diseño Utilizados
 
 ### Singleton Modificado
-En este proyecto, hemos implementado una variante del patrón de diseño Singleton para gestionar la instancia de la clase `Interfaz`. 
+En este proyecto, hemos implementado una variante del patrón de diseño Singleton para gestionar las instancias de las clases `Interfaz`, `InterfazDificultad`, `InterfazVictoria` y `Juego_Sudoku`. 
 
 #### Implementación:
 - **Método `getInstancia`**: 
